@@ -1,0 +1,79 @@
+import styles from "./Post.module.css"
+
+import { format, formatDistanceToNow } from "date-fns";
+import ptbr from "date-fns/locale/pt-BR"
+
+import { Avatar } from "./Avatar";
+import { Comment } from "./Comment";
+import { useState } from 'react';
+
+
+export function Post({ author, content, publishedAt }) {
+
+  
+  const publishedDateFormated = format(publishedAt, "d 'de' LLLL 'às' HH:mm'h'", { locale: ptbr })
+  
+  const publishedDateRelativeToNow = formatDistanceToNow(publishedAt, { locale: ptbr, addSuffix: true })
+  
+  const [comments, setComment] = useState(["Post muito bacana, hein!"])
+
+  const [newCommentText, setNewCommentText] = useState("")
+
+  function handleCreateComment() {
+    event.preventDefault();
+    setComment([...comments, newCommentText])
+    setNewCommentText("")
+  }
+
+  function handleNewCommentChange() {
+    setNewCommentText(event.target.value);
+  }
+
+  return (
+    <article className={styles.Post}>
+      <header>
+        <Avatar src={author.avatarUrl} />
+        <div className={styles.infoPost}>
+          <div className={styles.infoUser}>
+            <strong>{author.name}</strong>
+            <p>{author.role}</p>
+          </div>
+          <time title={publishedDateFormated} dateTime={publishedAt.toISOString()}>
+            {publishedDateRelativeToNow}
+          </time>
+        </div>
+      </header>
+      <div className={styles.content}>
+        {content.map(line => {
+          if (line.type == "paragraph") {
+            return <p key={line.content}>{line.content}</p>
+          } else if (line.type == "link") {
+            return <p key={line.content}><a href="#">{line.content}</a></p>
+          }
+        })}
+      </div>
+
+      <form onSubmit={handleCreateComment} className={styles.feedbackForm}>
+        <strong>Deixe seu feedback</strong>
+        <textarea name="comment" className={styles.feedback}
+          placeholder="Deixe um comentário"
+          value={newCommentText}
+          onChange={handleNewCommentChange}
+        />
+        <div className={styles.footer}>
+          <button type="submit">Publicar</button>
+        </div>
+      </form>
+      <div className={styles.commentList}>
+        {comments.map(comment => {
+          return (
+            <Comment 
+              key={comment} 
+              content={comment} 
+            />
+          )
+        })}
+      </div>
+    </article>
+  )
+}
