@@ -1,0 +1,41 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:focus {
+  outline: transparent;
+  box-shadow: 0 0 0 1.5px var(--csecond);
+}
+
+:root {
+  /* map colors */
+  --huebase: 122; 
+  --ccolor: 0%;
+
+  --cwhite: hsl(var(--huebase), 100%, 100%);
+  --cmain:  hsl(162, 100%, 26%);
+  --csecond: hsl(162, 100%, 35%);
+
+  --cbase100: hsl(var(--huebase), var(--ccolor), 90%);
+  --cbase300: hsl(var(--huebase), var(--ccolor), 70%);
+  --cbase400: hsl(var(--huebase), var(--ccolor), 60%);
+  --cbase600: hsl(var(--huebase), var(--ccolor), 40%);
+  --cbase700: hsl(var(--huebase), var(--ccolor), 30%);
+  --cbase800: hsl(var(--huebase), var(--ccolor), 20%);
+  --cbase900: hsl(var(--huebase), var(--ccolor), 10%);
+
+}
+
+body {
+  background: var(--cbase900);
+  color: var(--cbase300);
+  -webkit-font-smoothing: antialiased;
+}
+
+body, input, textarea, button {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400;
+  font-size: 1rem;
+}

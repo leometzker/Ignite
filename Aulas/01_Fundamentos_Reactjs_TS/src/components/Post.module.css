@@ -1,0 +1,131 @@
+.Post {
+  background-color: var(--cbase800);
+  border-radius: 8px;
+  padding: 2.5rem;
+  line-height: 1.6;
+  color: var(--cbase100);
+}
+
+.Post + .Post{
+  margin-top: 2rem;
+}
+
+.Post > header {
+  display: flex;
+  gap: 1rem;
+}
+
+.infoPost{
+  display: flex;
+  align-items: flex-start;
+  flex: 1;
+  justify-content: space-between;
+}
+
+.infoUser {
+  color: var(--cbase300);
+  font-size: 0.75rem;
+}
+
+.infoUser strong {
+  font-size: 1rem;
+  font-weight: 700;
+  line-height: 1.6s;
+  color: var(--cbase100);
+}
+
+header time{
+  font-size: 0.875rem;
+  color: var(--cbase300);
+}
+
+.content {
+  font-weight: 400;
+  color: var(--cbase300);
+  line-height: 1.6;
+}
+
+.content p {
+  margin-top: 1rem;
+}
+
+.content a{
+   font-weight: bold;
+   color: var(--cmain);
+   text-decoration: none;
+   border: 0;
+}
+
+.content a:hover {
+  background-color: transparent;
+  color: var(--csecond);
+}
+
+.feedbackForm {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin-top: 1.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--cbase600);
+}
+
+.feedbackForm > strong {
+  line-height: 1.6;
+  color: var(--cbase100);
+  margin-bottom: 1rem;
+  
+}
+
+.feedbackForm textarea {
+  background-color: var(--cbase900);
+  padding: 0.75rem;
+  resize: none;
+  height: 6rem;
+  border-radius: 8px;
+  border: 0;
+  color: var(--cbase300);
+  line-height: 1.4;
+  margin-bottom: 1rem;
+}
+.feedbackForm textarea:hover {
+  outline: solid 1px var(--csecond); 
+}
+
+.feedbackForm button {
+  display: flex;
+  width: 6.25rem;
+  height: 3rem;
+  margin-bottom: 1rem;
+  justify-content: center;
+  align-items: center;
+  border-radius: 8px;
+  border: var(--cbase900);
+  background: var(--cmain);
+  color: var(--cbase100);
+  font-weight: bold;
+  cursor: pointer;
+  transition: backgroun-color 0.1s;
+}
+
+.feedbackForm button[type=submit]:disabled{
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.feedbackForm > button[type=submit]:not(:disabled):hover {
+  background: var(--csecond);
+}
+
+.feedbackForm .footer {
+  visibility: hidden;
+  max-height: 0;
+}
+
+.feedbackForm:focus-within .footer {
+  visibility: visible;
+  max-height: none;
+}
+.commentList {
+  margin-top: 2rem;
+}
