@@ -108,7 +108,12 @@ header time{
   transition: backgroun-color 0.1s;
 }
 
-.feedbackForm > button:hover {
+.feedbackForm button[type=submit]:disabled{
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.feedbackForm > button[type=submit]:not(:disabled):hover {
   background: var(--csecond);
 }
 
