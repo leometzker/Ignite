@@ -1,11 +1,11 @@
 import styles from "./Header.module.css"
-import logo from "../assets/react.svg"
+// import logo from "..vite.svg"
 
 export function Header(){
   return(
     <header className={styles.header}>
-      <img src={logo}alt="logo" />
-      {/* <strong>Ignite Feed</strong> */}
+      {/* <img src={logo}alt="logo" /> */}
+      <strong>Ignite Feed</strong>
     </header>
   )
 }

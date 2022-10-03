@@ -17,6 +17,11 @@ interface Author {
 interface PostProps {
   author: Author;
   publishedAt: Date;
+  content: Content[];
+}
+
+interface Content {
+  type: "paragraph" | "link";
   content: string;
 }
 
@@ -27,7 +32,7 @@ export function Post({ author, content, publishedAt }: PostProps) {
   
   const publishedDateRelativeToNow = formatDistanceToNow(publishedAt, { locale: ptbr, addSuffix: true })
   
-  const [comments, setComment] = useState([""])
+  const [comments, setComment] = useState([])
 
   const [newCommentText, setNewCommentText] = useState("")
 
