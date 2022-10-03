@@ -8,11 +8,14 @@ import styles from "./App.module.css";
 // importação components
 import { Header } from './components/Header'
 import { Sidebar } from './components/Sidebar'
-import { Post } from './components/Post';
+import { Post, PostProps } from './components/Post';
 
 // ******** APLICAÇÃO *******************
+interface Post extends PostProps {
+  id: number;
+}
 
-const posts = [
+const posts: Post[] = [
   {
     id: 1,
     author: {
@@ -20,7 +23,7 @@ const posts = [
       name: "Leonardo Metzker",
       role: "Student"
     },
-    content: [
+    contentPost: [
       { type:  "paragraph", content: "Fala galeraa 👋"},
       { type: "paragraph", content: "Acabei de subir mais um projeto no meu portifa. É um projeto que fiz no NLW Return, evento da Rocketseat. O nome do projeto é DoctorCare 🚀"},
       { type: "link", content: "👉 jane.design/doctorcare"}           
@@ -34,7 +37,7 @@ const posts = [
       name: "Mayk Brito",
       role: "CTO @Rocketseat"
     },
-    content: [
+    contentPost: [
       { type:  "paragraph", content: "Nao pode ser o mesmo"},
       { type: "paragraph", content: "Aprendendo como importar um dado para o app"},
       { type: "link", content: "👉 mayk.design/doctorcare"}           
@@ -57,7 +60,7 @@ export function App() {
               <Post
                 key={post.id}
                 author={post.author}
-                content={post.content}
+                contentPost={post.contentPost}
                 publishedAt={post.publishedAt}
               />
             ) 

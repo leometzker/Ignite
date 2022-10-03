@@ -8,32 +8,33 @@ import { Comment } from "./Comment";
 import { ChangeEvent, FormEvent, useState } from 'react';
 
 
-interface Author {
+export interface Author {
   name: string;
   role: string;
   avatarUrl: string;
 }
 
-interface PostProps {
+export interface PostProps {
   author: Author;
   publishedAt: Date;
-  content: Content[];
+  contentPost: Content[];
 }
 
-interface Content {
+export interface Content {
   type: "paragraph" | "link";
   content: string;
 }
 
-export function Post({ author, content, publishedAt }: PostProps) {
 
+export function Post({ author, contentPost, publishedAt }: PostProps) {
   
   const publishedDateFormated = format(publishedAt, "d 'de' LLLL 'às' HH:mm'h'", { locale: ptbr })
   
   const publishedDateRelativeToNow = formatDistanceToNow(publishedAt, { locale: ptbr, addSuffix: true })
   
-  const [comments, setComment] = useState([])
 
+  const [comments, setComment] = useState<string[]>([]);
+  
   const [newCommentText, setNewCommentText] = useState("")
 
   function handleCreateComment(event: FormEvent) {
@@ -75,7 +76,7 @@ export function Post({ author, content, publishedAt }: PostProps) {
         </div>
       </header>
       <div className={styles.content}>
-        {content.map(line => {
+        {contentPost.map(line => {
           if (line.type == "paragraph") {
             return <p key={line.content}>{line.content}</p>
           } else if (line.type == "link") {
