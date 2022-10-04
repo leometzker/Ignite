@@ -1,0 +1,48 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+
+  /* map colors */
+  --huebase: 0; 
+  --ccolor: 0%;
+
+  --cwhite: hsl(var(--huebase), 100%, 100%);
+  --cl100: hsl(var(--huebase), var(--ccolor), 90%);
+  --cl300: hsl(var(--huebase), var(--ccolor), 50%);
+  --cl400: hsl(var(--huebase), var(--ccolor), 20%);
+  --cl500: hsl(var(--huebase), var(--ccolor), 15%);
+  --cl600: hsl(var(--huebase), var(--ccolor), 10%);
+  --cl700: hsl(var(--huebase), var(--ccolor), 5%);
+  
+  --danger: hsla(360, 70%, 62%, 1);
+
+  --purple: hsla(239, 92%, 75%, 1);
+  --purpleDark: hsla(239, 53%, 59%, 1);
+
+  --blue: hsla(203, 69%, 59%, 1);
+  --blueDark: hsla(202, 69%, 37%, 1);
+
+}
+
+body {
+  font-family: Inter, sans-serif;
+  font-size: 1rem;
+  line-height: 1.4;
+  font-weight: 400;
+  -webkit-font-smoothing: antialiased;
+  color: var(--cl100);
+}
+
+button, textarea, a, input {
+  font-family: Inter, sans-serif;
+  font-size: 1rem;
+  line-height: 1.4;
+  font-weight: bold; 
+  -webkit-font-smoothing: antialiased;
+  color: var(--cl100);
+  border: 0;
+} 

@@ -1,0 +1,174 @@
+.backgroudTop {
+  top: 0;
+  right: 0;
+  position: absolute;
+  width: 100vw;
+  z-index: -100;
+  height: 12.5rem;
+  background-color: var(--cl700);
+}
+
+
+/* layout mobile */
+@media (max-width: 768px) {
+  
+  html {
+      font-size: 0.875rem;
+  }
+  
+}
+
+
+/* definições do layout */
+
+body {
+  background-color: var(--cl600);
+}
+
+.layout {
+  display: grid;
+  grid-template-rows: 12.5rem 1fr; 
+  grid-template-columns: 46rem;
+  margin: 0 auto;
+  width: 46rem;
+}
+ 
+/* ***** HEADER *********** */
+
+.layout > header {
+  height: 12.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-bottom: 1.5rem;
+  font-size: 3rem;
+  color: var(--blue);
+  font-weight: bold;
+  gap: 0.75rem;
+}
+
+
+.layout > header span {
+  color: var(--purpleDark);
+}
+
+
+/* ***** MAIN *********** */
+
+.layout main {
+  display: flex;
+  flex-direction: column;
+  margin-top: -1.7rem;
+  gap: 2rem;
+}
+
+
+/* ***** NOVA TAREFA ********* */
+
+.layout main .newTask{
+  height: 3.4rem;
+}
+
+.newTask form {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.newTask .setNewTask {
+  height: 3.375rem;  
+  width: 39.875rem;
+  border-radius: 9px;
+  padding: 1rem;
+  background-color: var(--cl600);
+  border: 1px solid var(--cl700);
+}
+
+.newTask form button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  background-color: var(--blueDark);
+  height: 3.25rem;
+  width: 5.625rem;
+  border-radius: 8px;
+  font-weight: bold;
+  color: var(--cl100);
+  border: 1px solid var(--cl700);
+}
+
+
+/* ***** TAREFAS ********** */
+
+.layout main .tasks {
+  /* background-color: antiquewhite; */
+  /* height: auto; */
+}
+
+/* ***** TASK INFO ********** */
+.tasks .info {
+  height: 1.19rem;
+  font-size: 0.75rem;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.5rem;
+}
+
+.info .createtasks{
+  display: flex;
+  gap: 0.5rem;
+  color: var(--blue);
+  line-height: 1.4;
+}
+
+.createtasks span {
+  background-color: var(--cl400);
+  width: 2rem;
+  height: 1.15rem;
+  text-align: center;
+  text-justify: distribute;
+  color: var(--cl100);
+  border-radius: 8px;
+  padding: 0 0.5rem;
+}
+
+.info .concludeTasks{
+  color: var(--purple);
+  display: flex;
+  gap: 0.5rem;
+}
+
+.concludeTasks span {
+  background-color: var(--cl400);
+  width: 3.25rem;
+  height: 1.15rem;
+  /* line-height: 1.6; */
+  text-align: center;
+  text-justify: distribute;
+  color: var(--cl100);
+  border-radius: 8px;
+  padding: 0 0.5rem;
+}
+
+
+/* ***** TASK LIST ********** */
+
+.tasks .taskList {
+  background-color: rgb(70, 226, 43);
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  /* margin-top: 1.5rem; */
+  flex: 1;
+  justify-content: center;
+}
+
+.tasks .taskList .task {
+  background-color: blueviolet;
+  /* height: 50px;
+  width: 100%;
+  border: solid 1px; */
+}
