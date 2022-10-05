@@ -1,7 +1,7 @@
 // definições e variáveis globais
 import "./global.css"
 
-import {PlusCircle, Rocket} from "phosphor-react";
+import {Clipboard, PlusCircle, Rocket, Trash, TrashSimple} from "phosphor-react";
 
 import styles from "./App.module.css";
 
@@ -23,7 +23,7 @@ export function App() {
               <input 
                 className={styles.setNewTask}
                 type="text"
-                placeholder="adicione uma nova tarefa" 
+                placeholder="Adicione uma nova tarefa" 
 
               />
               <button>Criar <PlusCircle size={20}></PlusCircle> </button>
@@ -41,12 +41,32 @@ export function App() {
               </div>
             </div>
             <div className={styles.taskList}>
+
+              {/* nfo empty taskList */}
+
+              <div className={styles.noTaskInfo}>
+                <Clipboard size={56} weight={"thin"} />
+                <strong>Você ainda não tem tarefas cadastras</strong>
+                <p>Crie tarefas e organize seus itens a fazer</p>
+              </div>
+              
+              
               <div className={styles.task}>
-                <button radioGroup="1" >s</button>
+                <input  className={styles.completedTaskSet}
+                  type="checkbox" 
+                  name="completedTaskSet" 
+                  id="" 
+                  // checked={false}
+                />
+          
                 <div className={styles.taskContent}>
-                  Lorem, ipsum dolor sit amet consectetur adipisicing elit. Expedita iusto excepturi ex iste inventore modi, reiciendis molestias eveniet at earum! Autem, placeat minus quo ipsa deserunt et aperiam illum ut!
+                  <p>
+                    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Expedita iusto excepturi ex iste inventore modi, reiciendis molestias eveniet at earum! Autem, placeat minus quo ipsa deserunt et aperiam illum ut! Integer
+                  </p>
                 </div>
-                <button>deletar</button>
+                <button className={styles.deleteTask}>
+                  <Trash size={24}/>
+                </button>
 
               </div>
             </div>
