@@ -1,9 +1,9 @@
-// definições e variáveis globais
 import "./global.css"
 
-import {Clipboard, PlusCircle, Rocket, Trash, TrashSimple} from "phosphor-react";
+import {Clipboard, PlusCircle, Rocket} from "phosphor-react";
 
 import styles from "./App.module.css";
+import { Task } from "./components/Task";
 
 
 export function App() {
@@ -50,25 +50,8 @@ export function App() {
                 <p>Crie tarefas e organize seus itens a fazer</p>
               </div>
               
+                <Task />
               
-              <div className={styles.task}>
-                <input  className={styles.completedTaskSet}
-                  type="checkbox" 
-                  name="completedTaskSet" 
-                  id="" 
-                  // checked={false}
-                />
-          
-                <div className={styles.taskContent}>
-                  <p>
-                    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Expedita iusto excepturi ex iste inventore modi, reiciendis molestias eveniet at earum! Autem, placeat minus quo ipsa deserunt et aperiam illum ut! Integer
-                  </p>
-                </div>
-                <button className={styles.deleteTask}>
-                  <Trash size={24}/>
-                </button>
-
-              </div>
             </div>
           </div>
         </main>

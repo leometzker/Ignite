@@ -1,6 +1,3 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-
 // css do App
 import "./global.css"
 import styles from "./App.module.css";
