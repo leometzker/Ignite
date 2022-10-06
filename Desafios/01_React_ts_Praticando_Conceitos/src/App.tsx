@@ -3,58 +3,87 @@ import "./global.css"
 import {Clipboard, PlusCircle, Rocket} from "phosphor-react";
 
 import styles from "./App.module.css";
-import { Task, taskProps } from "./components/Task";
-import { useState } from "react";
+import { v4 as uuidv4 } from 'uuid';
 
-interface myTaskProps{
+import { Task, taskProps } from "./components/Task";
+import { ChangeEvent, FormEvent, useState } from "react";
+
+
+interface myTaskProps {
   id: number;
   concluded: boolean;
   content: string;
 }
 
-const myTasks: myTaskProps[] = [
-  {
-    id: 1,
-    concluded: true,
-    content: "Descrição da primeira tarefa concluida"
-  },
+// const myTasks: myTaskProps[] = [
+//   {
+//     id: uuidv4(),
+//     concluded: true,
+//     content: "Descrição da primeira tarefa concluida"
+//   },
 
-  {
-    id: 2,
-    concluded: false,
-    content: "Esta é outra tarefa"
-  },
+//   {
+//     id: uuidv4(),
+//     concluded: false,
+//     content: "Esta é outra tarefa"
+//   },
 
-  {
-    id: 3,
-    concluded: false,
-    content: "mais uma pra fazer e nao sei como"
-  }
-]
+//   {
+//     id: uuidv4(),
+//     concluded: false,
+//     content: "mais uma pra fazer e nao sei como"
+//   }
+// ]
 
 export function App() {
 
+  const [myTaskList, setMyTaskList] = useState<myTaskProps[]>([])
 
-const [myTaskList, setMyTaskList] = useState<myTaskProps[]>([])
+  const [newTask, setNewTask] = useState<myTaskProps>()
 
-function SetStatus (id: number) {
-  
-  // console.log(myTasks)
-  
-  const taskUpdated = myTaskList.filter(t => { 
-    if (t.id === id) {(t.concluded = !t.concluded)}
-    return t;
-  })
-  
-  // console.log(taskUpdated)
-  setMyTaskList(taskUpdated)
-}
 
-function novatarefa (){
-  setMyTaskList(myTasks)
-  
-}
+  function handleNewTask(event: ChangeEvent<HTMLInputElement>) {
+    const addTask: myTaskProps = {      
+      id: uuidv4(),
+      concluded: false,
+      content: event.target.value
+    }
 
+    setNewTask (addTask)
+  }
+
+
+  function createNewTask (event: FormEvent) {
+    event.preventDefault();
+    
+    setMyTaskList([...myTaskList, newTask])
+
+    // COMO MELHORAR?
+    const addTask: myTaskProps = {      
+      id: uuidv4(),
+      concluded: false,
+      content: ""
+    }
+
+    setNewTask(addTask)
+  }
+
+
+  function SetStatus (id: number) {
+    
+    const taskUpdated = myTaskList.filter(t => { 
+      if (t.id === id) {(t.concluded = !t.concluded)}
+      return t;
+    })
+    
+    // console.log(taskUpdated)
+    setMyTaskList(taskUpdated)
+  }
+
+  function DeleteTask (id: number) {
+    setMyTaskList([])
+    
+  }
 
   return (    
     <div>
@@ -67,17 +96,23 @@ function novatarefa (){
         </header>
 
         <main>
+
+           {/* create new task */}
           <div className={styles.newTask}>
             <form action="">
               <input 
                 className={styles.setNewTask}
                 type="text"
                 placeholder="Adicione uma nova tarefa" 
-                onChange={novatarefa}
-
+                onChange={handleNewTask}
+                value={newTask?.content}
               />
-              <button> Criar <PlusCircle size={20}/>
-                
+              <button 
+                onClick={createNewTask} 
+                type="submit"
+              > 
+                Criar 
+                <PlusCircle size={20}/>                
               </button>
             </form>
           </div>
@@ -111,7 +146,7 @@ function novatarefa (){
                     concluded= {t.concluded}
                     content= {t.content}
                     onSetStatus={SetStatus}
-                    // onDeleteTask={}
+                    onDeleteTask={DeleteTask}
                   />
                 )
               })}

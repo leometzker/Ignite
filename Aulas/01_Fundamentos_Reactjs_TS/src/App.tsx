@@ -40,6 +40,19 @@ const posts: Post[] = [
       { type: "link", content: "👉 mayk.design/doctorcare"}           
     ],
     publishedAt: new Date("2022-09-28 17:00:01")
+  } ,
+  {
+    id: 3,
+    author: {
+      avatarUrl: "https://github.com/joana.png",
+      name: "Joana",
+      role: "Não sei"
+    },
+    contentPost: [
+      { type:  "paragraph", content: "Fala doug"},
+      { type: "link", content: "👉 mayk.design/doctorcare"}           
+    ],
+    publishedAt: new Date("2022-09-28 17:00:01")
   }  
 ]
 
