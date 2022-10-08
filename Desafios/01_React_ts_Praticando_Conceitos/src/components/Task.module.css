@@ -1,0 +1,36 @@
+.task {
+  background-color: var(--cl400);
+  border-radius: 8px;
+  padding: 1rem;
+  min-height: 4.5rem;
+
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  
+  font-size: 0.875;
+  font-weight: normal;
+  line-height:1.2;
+  justify-content: space-between;
+}
+
+.completedTaskSet{
+  height: 1.5rem;
+  width: 1.5rem;
+}
+
+.completedTaskSet:checked + .taskContent p {
+  color: var(--cl300);
+  text-decoration: line-through 
+}
+
+.task p {
+  width: 39.5rem;
+  text-align: left;
+}
+
+.deleteTask{
+  background-color: transparent;  
+  border: 0;
+  color: var(--cl300);
+}

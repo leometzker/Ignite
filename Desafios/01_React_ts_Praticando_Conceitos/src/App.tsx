@@ -5,12 +5,12 @@ import {Clipboard, PlusCircle, Rocket} from "phosphor-react";
 import styles from "./App.module.css";
 import { v4 as uuidv4 } from 'uuid';
 
-import { Task, taskProps } from "./components/Task";
+import { Task } from "./components/Task";
 import { ChangeEvent, FormEvent, useState } from "react";
 
 
 interface myTaskProps {
-  id: number;
+  id: string;
   concluded: boolean;
   content: string;
 }
@@ -39,48 +39,51 @@ export function App() {
 
   const [myTaskList, setMyTaskList] = useState<myTaskProps[]>([])
 
-  const [newTask, setNewTask] = useState<myTaskProps>()
+  const [newTaskContent, setNewTaskCotent] = useState("")
 
 
+  // INFO
+  const numTasksCreated: number = myTaskList.length | 0;
+
+  const numTasksConcluded: number = myTaskList.filter(t => t.concluded === true).length;
+
+  // **************
+
+
+
+  // NEW TASK CONTENT 
   function handleNewTask(event: ChangeEvent<HTMLInputElement>) {
-    const addTask: myTaskProps = {      
-      id: uuidv4(),
-      concluded: false,
-      content: event.target.value
-    }
-
-    setNewTask (addTask)
+    setNewTaskCotent (event.target.value)
   }
-
-
+  
+  // CREATE NEW TASK 
   function createNewTask (event: FormEvent) {
     event.preventDefault();
     
-    setMyTaskList([...myTaskList, newTask])
-
-    // COMO MELHORAR?
-    const addTask: myTaskProps = {      
+    const addNewTask: myTaskProps = {      
       id: uuidv4(),
       concluded: false,
-      content: ""
+      content: newTaskContent 
     }
 
-    setNewTask(addTask)
+    setMyTaskList([...myTaskList, addNewTask])
+
+    setNewTaskCotent("")
   }
 
-
-  function SetStatus (id: number) {
+  // CHANGE TASK STATE(CHECKED || UNCHECKED) 
+  function SetStatus (id: string) {
     
     const taskUpdated = myTaskList.filter(t => { 
       if (t.id === id) {(t.concluded = !t.concluded)}
       return t;
     })
     
-    // console.log(taskUpdated)
     setMyTaskList(taskUpdated)
   }
-
-  function DeleteTask (id: number) {
+  
+  // DELETE TASK 
+  function DeleteTask (id: string) {
     setMyTaskList([])
     
   }
@@ -105,11 +108,13 @@ export function App() {
                 type="text"
                 placeholder="Adicione uma nova tarefa" 
                 onChange={handleNewTask}
-                value={newTask?.content}
+                value={newTaskContent}
+                required
               />
               <button 
                 onClick={createNewTask} 
                 type="submit"
+                disabled={newTaskContent.length == 0}
               > 
                 Criar 
                 <PlusCircle size={20}/>                
@@ -120,18 +125,18 @@ export function App() {
             <div className={styles.info}>
               <div className={styles.createtasks}>
                 <strong>Tarefas criadas</strong> 
-                <span>5</span>
+                <span> {numTasksCreated} </span>
               </div>
               <div className={styles.concludeTasks}>
                 <strong>Concluídas</strong>
-                <span>2 de 3</span>
+                <span>{numTasksConcluded} de {numTasksCreated} </span>
               </div>
             </div>
             <div className={styles.taskList}>
 
               {/* nfo empty taskList */}
 
-              <div className={styles.noTaskInfo}>
+              <div className={styles.noTaskInfo}  >
                 <Clipboard size={56} weight={"thin"} />
                 <strong>Você ainda não tem tarefas cadastras</strong>
                 <p>Crie tarefas e organize seus itens a fazer</p>

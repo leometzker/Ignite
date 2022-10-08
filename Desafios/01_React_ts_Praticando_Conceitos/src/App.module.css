@@ -128,6 +128,7 @@ body {
   color: var(--cl100);
   border-radius: 8px;
   padding: 0 0.5rem;
+  line-height: 1.6;
 }
 
 .info .concludeTasks{
@@ -138,9 +139,9 @@ body {
 
 .concludeTasks span {
   background-color: var(--cl400);
-  width: 3.25rem;
+  width: 3.5rem;
   height: 1.15rem;
-  /* line-height: 1.6; */
+  line-height: 1.6;
   text-align: center;
   text-justify: distribute;
   color: var(--cl100);
@@ -178,9 +179,11 @@ body {
   justify-content: center;
   align-items: center;
   width: 100%;
-  color: var(--cl300);
+  color: var(--cl300) ;
   z-index: -1;
-
-  visibility: hidden;
+  opacity: 50%;
 }
 
+.noTaskInfo p{
+  font-size: 0.85rem;
+}
