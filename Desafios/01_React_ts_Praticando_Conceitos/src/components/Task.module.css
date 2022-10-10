@@ -15,14 +15,24 @@
 }
 
 .completedTaskSet{
+  all: unset;
   height: 1.5rem;
   width: 1.5rem;
+  border-radius: 50%;
+
+  border: 4px solid var(--purple);
+  transition: background-color 0.2s ; 
+  display: inline-block;
+  box-sizing: border-box;
+}
+
+.completedTaskSet:checked{
+  background-color: var(--blue);
 }
 
 .completedTaskSet:checked ~ .taskContent p {
   color: var(--cl300);
   text-decoration: line-through 
-
 }
 
 .task p {

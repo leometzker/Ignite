@@ -1,5 +1,4 @@
 import { Trash } from "phosphor-react"
-import { ButtonHTMLAttributes, ChangeEvent, useState } from "react";
 import styles from "./Task.module.css"
 
 export interface taskProps {
@@ -13,7 +12,7 @@ export interface taskProps {
 export function Task ({id, concluded, content, onSetStatus, onDeleteTask}: taskProps) {
 
   // user set status  
-  function handleSetStatus (event: ChangeEvent<HTMLInputElement>){
+  function handleSetStatus (){
     onSetStatus(id);
   }
 
