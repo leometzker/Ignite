@@ -19,9 +19,10 @@
   width: 1.5rem;
 }
 
-.completedTaskSet:checked + .taskContent p {
+.completedTaskSet:checked ~ .taskContent p {
   color: var(--cl300);
   text-decoration: line-through 
+
 }
 
 .task p {

@@ -29,8 +29,8 @@ export function Task ({id, concluded, content, onSetStatus, onDeleteTask}: taskP
         name="completedTaskSet" 
         checked={concluded}
         onChange={handleSetStatus}
+        id="checkbtn"
       />
-
       <div className={styles.taskContent}>
         <p>
           {content}

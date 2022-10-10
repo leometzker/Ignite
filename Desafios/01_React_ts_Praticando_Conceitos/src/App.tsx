@@ -15,42 +15,21 @@ interface myTaskProps {
   content: string;
 }
 
-// const myTasks: myTaskProps[] = [
-//   {
-//     id: uuidv4(),
-//     concluded: true,
-//     content: "Descrição da primeira tarefa concluida"
-//   },
-
-//   {
-//     id: uuidv4(),
-//     concluded: false,
-//     content: "Esta é outra tarefa"
-//   },
-
-//   {
-//     id: uuidv4(),
-//     concluded: false,
-//     content: "mais uma pra fazer e nao sei como"
-//   }
-// ]
-
 export function App() {
-
+  
   const [myTaskList, setMyTaskList] = useState<myTaskProps[]>([])
-
+  
   const [newTaskContent, setNewTaskCotent] = useState("")
-
+  
+  let showBack: boolean = true;
 
   // INFO
   const numTasksCreated: number = myTaskList.length | 0;
 
   const numTasksConcluded: number = myTaskList.filter(t => t.concluded === true).length;
 
-  // **************
-
-
-
+  if ( myTaskList.length > 0 ) { showBack = false}
+  
   // NEW TASK CONTENT 
   function handleNewTask(event: ChangeEvent<HTMLInputElement>) {
     setNewTaskCotent (event.target.value)
@@ -74,7 +53,7 @@ export function App() {
   // CHANGE TASK STATE(CHECKED || UNCHECKED) 
   function SetStatus (id: string) {
     
-    const taskUpdated = myTaskList.filter(t => { 
+    const taskUpdated = myTaskList.map(t => { 
       if (t.id === id) {(t.concluded = !t.concluded)}
       return t;
     })
@@ -84,8 +63,11 @@ export function App() {
   
   // DELETE TASK 
   function DeleteTask (id: string) {
-    setMyTaskList([])
-    
+    const listWithDeletedTask = myTaskList.filter(t => t.id !== id)
+    setMyTaskList(listWithDeletedTask)
+    if ( myTaskList.length > 0 ) {
+      showBack = false;    
+    }
   }
 
   return (    
@@ -99,8 +81,8 @@ export function App() {
         </header>
 
         <main>
-
-           {/* create new task */}
+          
+          {/* create new task */}
           <div className={styles.newTask}>
             <form action="">
               <input 
@@ -134,14 +116,13 @@ export function App() {
             </div>
             <div className={styles.taskList}>
 
-              {/* nfo empty taskList */}
-
-              <div className={styles.noTaskInfo}  >
+              {/* task list empty                     */}
+              <div className={showBack ? styles.noTaskInfo : styles.noTaskInfoHidden} >
                 <Clipboard size={56} weight={"thin"} />
                 <strong>Você ainda não tem tarefas cadastras</strong>
                 <p>Crie tarefas e organize seus itens a fazer</p>
-              </div>
-              
+              </div>                      
+
               {/* iteração das tarefas */}
                 {myTaskList.map(t => {
                 return (

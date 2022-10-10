@@ -166,6 +166,7 @@ body {
   position: relative;
 }
 
+
 /* quando a lista de tarefas está vazia */
 
 .noTaskInfo{
@@ -179,10 +180,28 @@ body {
   justify-content: center;
   align-items: center;
   width: 100%;
-  color: var(--cl300) ;
+  color: var(--cl300);
   z-index: -1;
   opacity: 50%;
 }
+
+.noTaskInfoHidden{
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 4rem 1.5rem;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  color: var(--cl300) ;
+  z-index: -1;
+  opacity: 50%;
+  visibility: hidden;
+}
+
 
 .noTaskInfo p{
   font-size: 0.85rem;
