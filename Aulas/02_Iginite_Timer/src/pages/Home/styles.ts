@@ -1,6 +1,7 @@
 
 import styled from 'styled-components';
 
+
 export const HomeContainer = styled.main`
   display: flex;
   flex-direction: column;
@@ -17,13 +18,14 @@ export const HomeContainer = styled.main`
     gap: 3.5rem;
   }
 `
+
 const BaseInput = styled.input`
   background: transparent;
   border: 0;
   border-bottom: 2px solid ${props => props.theme['gray-500']};
   /* height: 2.5rem; */
   font-weight: bold;
-  font-size: 1.125rem;
+  font-size: 1rem;
   padding: 0 0.5rem;
   color: ${props => props.theme['gray-100']};
   
@@ -59,7 +61,7 @@ export const FormContainer = styled.div`
   gap: 0.5rem;
   
   color: ${props => props.theme['gray-100']};
-  font-size: 1.125rem;
+  font-size: 1rem;
   /* font-weight: bold; */
 `
 
