@@ -3,7 +3,9 @@ import styled from "styled-components";
 export const HistoryContainer = styled.main`
   display: flex;
   flex-direction: column;
-  flex: 1;
+  /* flex: 1; */
+  height: calc(100vh - 17rem);
+  min-height: 25rem;
   padding: 3.5rem;
 
   h1 {

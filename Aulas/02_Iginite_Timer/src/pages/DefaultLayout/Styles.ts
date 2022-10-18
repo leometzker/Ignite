@@ -9,4 +9,7 @@ export const LayoutContainer  = styled.div`
   display: flex;
   flex-direction: column;
   background-color: ${prpos => prpos.theme["gray-800"]};
+
+  overflow: auto;
+  min-height: 35rem;
 `
