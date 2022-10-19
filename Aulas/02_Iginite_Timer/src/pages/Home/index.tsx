@@ -1,9 +1,9 @@
-import { Play } from "phosphor-react";
+import { HandPalm, Play } from "phosphor-react";
 import { useForm } from "react-hook-form"
 import { useEffect, useState } from "react";
 
 import { CountContainer, CountdownButton, FormContainer, HomeContainer,  
-  MinutesAmountInput, Separator, TaskInput } from "./styles";
+  MinutesAmountInput, Separator, StopButton, TaskInput } from "./styles";
   
 import { zodResolver } from "@hookform/resolvers/zod"
 import * as zod from "zod"
@@ -22,7 +22,8 @@ interface Cycle {
   id: string,
   task: string,
   minutesAmount: number,
-  startDate: Date
+  startDate: Date,
+  interruptedDate?: Date
 }
 
 export function Home() {
@@ -55,32 +56,63 @@ export function Home() {
 
     // usar arrow function quando um estado depende do valor anterior do mesmo
     setCycles(state => [...state, newCycle])
-
-    reset()
+    
+    setAmountSecondsPassed(0)
   }
   
+  function handleInterruptCycle () {
+
+    setCycles(cycles.map((c) => { 
+      if (c.id === activeCycleId ) {
+        return {...c, interruptedDate: new Date}
+      } else {
+        return c
+      }
+    }))
+
+    setActiveCycleId(null)
+
+    reset()
+    document.title = `Ignite Timer`
+  }
+
   const activeCycle  = cycles.find((c) => c.id == activeCycleId)
+
+  let interval: number
 
   useEffect(() => {
     if ( activeCycle ) { 
-      setInterval(() => {
+      interval = setInterval(() => {
         setAmountSecondsPassed(differenceInSeconds(new Date(), activeCycle.startDate))
       }, 1000)
     }
+
+    return () => {
+      clearInterval(interval)
+    }
+
   }, [activeCycle])
 
 
+  
   const totalSeconds = activeCycle ? activeCycle.minutesAmount * 60 : 0
   const currentSeconds = activeCycle ? totalSeconds - amountSecondsPassed : 0
-
+  
   const minutesAmount = Math.floor(currentSeconds/60)
   const secondsAmount = currentSeconds % 60
-
+  
   const minutes = String(minutesAmount).padStart(2,'0')
   const seconds = String(secondsAmount).padStart(2,'0')
-
+  
   const task = watch('task')
   const isSubmitDisabled = !task
+  
+  useEffect(() => {
+    if (activeCycle) {
+      document.title = `${minutes}:${seconds}`
+    }
+  }, [minutes, seconds, activeCycle])
+
 
   return (
     <HomeContainer>
@@ -93,6 +125,7 @@ export function Home() {
             id="task" 
             placeholder="de um nome para seu projeto"
             list="task-list"
+            disabled= {!!activeCycle}
             {...register('task')}
           />
 
@@ -113,6 +146,7 @@ export function Home() {
             step= {5}
             max= {60}
             min= {5}
+            disabled= {!!activeCycle}
             {...register('minutesAmount', {valueAsNumber: true})}
           />
 
@@ -127,11 +161,20 @@ export function Home() {
           <span>{seconds[1]}</span>
         </CountContainer>
 
-        <CountdownButton disabled={isSubmitDisabled} type="submit">
-          <Play size= {24}/>
-          Começar
-        </CountdownButton>
+        { activeCycle  ? (
+          <StopButton onClick={handleInterruptCycle} type="button">
+            <HandPalm size= {24}/>
+            interromper
+          </StopButton>
+        ) : (
+          <CountdownButton disabled={isSubmitDisabled} type="submit">
+            <Play size= {24}/>
+            Começar
+          </CountdownButton>
+        )}
+
       </form>
+
     </HomeContainer>
   )
 }

@@ -50,6 +50,7 @@ export const TaskInput = styled(BaseInput)`
 
 export const MinutesAmountInput = styled(BaseInput)`
   width: 4rem;
+  text-align: center;
 `
 
 export const FormContainer = styled.div`
@@ -62,6 +63,7 @@ export const FormContainer = styled.div`
   
   color: ${props => props.theme['gray-100']};
   font-size: 1rem;
+
   /* font-weight: bold; */
 `
 
@@ -91,7 +93,7 @@ export const Separator = styled.div`
   justify-content: center;
 `
 
-export const CountdownButton = styled.button`
+export const BaseButton = styled.button`
   display: flex;
   align-items: center;
   justify-content: center;
@@ -101,17 +103,29 @@ export const CountdownButton = styled.button`
   gap: 8px;
   width: 100%;
   height: 3rem;
-  background-color: ${props => props.theme['green-500']};
   color: ${props => props.theme['gray-100']};
   
-  cursor: pointer;
-  
+  cursor: pointer; 
+
   &:disabled {
     opacity: 0.7;
     cursor: not-allowed;
   }
+  
+  `
 
+export const CountdownButton = styled(BaseButton)`
+  background-color: ${props => props.theme['green-500']};
+  
   &:not(:disabled):hover {
     background-color: ${props => props.theme['green-700']};
+  }
+`
+
+export const StopButton = styled(BaseButton)`
+  background-color: ${props => props.theme['red-500']};
+  
+  &:hover {
+    background-color: ${props => props.theme['red-700']};
   }
 `
