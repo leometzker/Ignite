@@ -1,15 +1,12 @@
-import { createContext, ReactNode, useState } from 'react'
+import { createContext, ReactNode, useReducer, useState } from 'react'
+import {
+  addNewCycleAction,
+  setFinishedCycleAction,
+  setInterruptCycleAction
+} from '../components/Reducers/Cycles/Actions'
+import { Cycle, CyclesReducer } from '../components/Reducers/Cycles/Cycles'
 
-export interface Cycle {
-  id: string
-  task: string
-  minutesAmount: number
-  startDate: Date
-  interruptedDate?: Date
-  finishedDate?: Date
-}
-
-interface CyclesContextType {
+export interface CyclesContextType {
   cycles: Cycle[]
   activeCycle: Cycle | undefined
   activeCycleId: string | null
@@ -32,8 +29,13 @@ interface CycleContextType {
 export const CyclesContext = createContext({} as CyclesContextType)
 
 export function CyclesContextProvider({ children }: CycleContextType) {
-  const [cycles, setCycles] = useState<Cycle[]>([])
-  const [activeCycleId, setActiveCycleId] = useState<string | null>(null)
+  const [{ cycles, activeCycleId }, dispatch] = useReducer(CyclesReducer, {
+    cycles: [],
+    activeCycleId: null
+  })
+
+  console.log(cycles)
+
   const [amountSecondsPassed, setAmountSecondsPassed] = useState(0)
 
   function setSecondsPassed(seconds: number) {
@@ -50,10 +52,7 @@ export function CyclesContextProvider({ children }: CycleContextType) {
       startDate: new Date()
     }
 
-    setActiveCycleId(idCycle)
-
-    // usar arrow function quando um estado depende do valor anterior do mesmo
-    setCycles(state => [...state, newCycle])
+    dispatch(addNewCycleAction(newCycle))
 
     setSecondsPassed(0)
   }
@@ -62,30 +61,12 @@ export function CyclesContextProvider({ children }: CycleContextType) {
 
   // seta o ciclo como finalizado
   function markCycleAsFinished() {
-    setCycles(state =>
-      state.map(c => {
-        if (c.id === activeCycleId) {
-          return { ...c, finishedDate: new Date() }
-        } else {
-          return c
-        }
-      })
-    )
-    setActiveCycleId(null)
+    dispatch(setFinishedCycleAction())
   }
 
   // interrompe o ciclo
   function InterruptCycle() {
-    setCycles(state =>
-      state.map(c => {
-        if (c.id === activeCycleId) {
-          return { ...c, interruptedDate: new Date() }
-        } else {
-          return c
-        }
-      })
-    )
-    setActiveCycleId(null)
+    dispatch(setInterruptCycleAction())
   }
 
   return (
