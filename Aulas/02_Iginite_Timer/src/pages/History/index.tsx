@@ -25,10 +25,22 @@ export function History() {
                   <td>{c.task} </td>
                   <td>{c.minutesAmount} min</td>
                   <td>
-                    {formatDistanceToNow(c.startDate, {
-                      addSuffix: true,
-                      locale: ptBR
-                    })}
+                    {c.finishedDate &&
+                      formatDistanceToNow(c.finishedDate, {
+                        addSuffix: true,
+                        locale: ptBR
+                      })}
+                    {c.interruptedDate &&
+                      formatDistanceToNow(c.interruptedDate, {
+                        addSuffix: true,
+                        locale: ptBR
+                      })}
+                    {!c.finishedDate &&
+                      !c.interruptedDate &&
+                      formatDistanceToNow(c.startDate, {
+                        addSuffix: true,
+                        locale: ptBR
+                      })}
                   </td>
                   <td>
                     {c.finishedDate && (
