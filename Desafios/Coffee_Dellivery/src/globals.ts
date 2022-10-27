@@ -16,5 +16,19 @@ export const GlobalStyle = createGlobalStyle`
     color: ${props => props.theme.colors.base_text};
   }
 
+  svg {
+    color: ${props => props.theme.colors.purple};
+  }
+
+  button {
+    border: 0;
+     
+  }
+
+  @media screen {
+    
+  }
+
+
   /* font-family: 'Baloo 2', cursive; */
 `
