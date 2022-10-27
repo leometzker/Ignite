@@ -1,6 +1,6 @@
-import { HeaderStyled } from './HeaderStyled'
 import logo from '../assets/logo.svg'
 import { MapPin, ShoppingCart } from 'phosphor-react'
+import { HeaderStyled } from './Styles/HeaderStyled'
 
 export const Header = () => {
   return (
