@@ -2,6 +2,7 @@ import styled from 'styled-components'
 
 export const LayoutStyled = styled.div`
   max-width: 90rem;
+  margin: 0 auto;
 `
 
 // RESPONSIVIDADE VEM AQUI
