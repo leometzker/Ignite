@@ -3,10 +3,10 @@ import styled from 'styled-components'
 export const HeaderStyled = styled.header`
   background-color: ${props => props.theme.colors.background};
   height: 6.5rem;
-  padding: 2rem 10rem;
 
   display: flex;
   justify-content: space-between;
+  align-items: center;
 
   img {
     height: 2.5rem;

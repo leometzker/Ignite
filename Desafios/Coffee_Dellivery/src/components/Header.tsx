@@ -13,8 +13,7 @@ export const Header = () => {
           Gov. Valadares, MG
         </span>
         <button title="Carrinho de Compras">
-          {' '}
-          <ShoppingCart size={19} weight="fill" />{' '}
+          <ShoppingCart size={19} weight="fill" />
         </button>
       </div>
     </HeaderStyled>

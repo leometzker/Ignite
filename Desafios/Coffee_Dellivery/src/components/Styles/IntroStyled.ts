@@ -1,18 +1,17 @@
 import styled from 'styled-components'
 
 export const IntroStyled = styled.article`
-  width: 90rem;
+  width: 100%;
   height: 34rem;
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 5.75rem 10rem;
   gap: 3.5rem;
-  overflow: hidden;
 
   background-color: ${props => props.theme.colors.background};
 
   .introInfo {
+    min-width: 24rem;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -42,7 +41,6 @@ export const IntroStyled = styled.article`
       display: flex;
       justify-content: flex-start;
       flex-direction: column;
-
       tr {
         height: 2.625rem;
         display: flex;
@@ -89,12 +87,13 @@ export const IntroStyled = styled.article`
         }
       }
     }
+  }
 
-    .introImage {
-      img {
-        flex-shrink: 0;
-        height: 22.5rem;
-      }
+  .introImage {
+    flex: 1;
+    flex-shrink: 1;
+    img {
+      height: 22.5rem;
     }
   }
 `
