@@ -34,7 +34,7 @@ export const HeaderStyled = styled.header`
     gap: 0.75rem;
   }
 
-  button {
+  .shoppingCart {
     background-color: ${props => props.theme.colors.yellow_light};
     padding: 0.5rem;
     border-radius: 8px;
