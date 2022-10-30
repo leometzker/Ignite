@@ -72,17 +72,21 @@ export const ItemCatalogStyled = styled.div`
       line-height: 1.3;
       gap: 0.5rem;
 
-      span {
-        font-family: 'Roboto', sans-serif;
-        font-size: 0.875rem;
-        font-weight: 400;
-      }
-
-      strong {
+      .price {
         font-family: 'Baloo 2', cursive;
         font-size: 1.5rem;
         font-weight: 800;
         margin-left: 0;
+        display: flex;
+        align-items: center;
+        gap: 0.2rem;
+      }
+
+      .price::before {
+        content: 'R$';
+        font-family: 'Roboto', sans-serif;
+        font-size: 0.875rem;
+        font-weight: 700;
       }
 
       .count {

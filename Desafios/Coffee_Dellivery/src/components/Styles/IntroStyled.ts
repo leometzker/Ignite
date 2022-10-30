@@ -90,10 +90,8 @@ export const IntroStyled = styled.article`
   }
 
   .introImage {
-    flex: 1;
-    flex-shrink: 1;
     img {
-      height: 22.5rem;
+      width: 29rem;
     }
   }
 `

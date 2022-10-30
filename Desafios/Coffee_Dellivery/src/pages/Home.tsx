@@ -6,7 +6,6 @@ export const Home = () => {
   return (
     <HomeStyled>
       <Intro />
-
       <Catalog />
     </HomeStyled>
   )

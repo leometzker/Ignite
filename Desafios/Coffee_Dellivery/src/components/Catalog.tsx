@@ -1,9 +1,7 @@
+import { ItemCatalog, ItemCatalogType } from './ItemCatalog'
 import { CatalogStyeled } from './Styles/CatalogStyleg'
-import { Minus, Plus, ShoppingCart } from 'phosphor-react'
-import { ItemCatalogStyled } from './Styles/ItemCatalogStyled'
-import { ItemCatalog } from './ItemCatalog'
 
-const catalog: ItemCatalog[] = [
+const catalog: ItemCatalogType[] = [
   {
     id: '1',
     image: '../Catalogo/Chocolate_Quente.svg',
@@ -71,39 +69,22 @@ const catalog: ItemCatalog[] = [
 
 export const Catalog = () => {
   return (
-    <>
-      <h2>Nossos Cafés</h2>
-      <CatalogStyeled>
+    <CatalogStyeled>
+      <h2>Nossos cafés</h2>
+      <div className="catalogList">
         {catalog.map(i => {
           return (
-            <ItemCatalogStyled>
-              <div className="ItemCatalog" key={i.id}>
-                <img src={i.image} alt="" />
-                <div className="coffeeStyle">TRADICIONAL</div>
-                <div className="title">{i.name}</div>
-                <div className="description">{i.descripition}</div>
-                <div className="price_qtde">
-                  <strong>
-                    <span>R$ </span> {i.price}
-                  </strong>{' '}
-                  <div className="count">
-                    <button>
-                      <Minus size={14} />
-                    </button>
-                    1
-                    <button>
-                      <Plus size={14} />
-                    </button>
-                  </div>
-                  <button title="Carrinho de Compras" className="shoppingCart">
-                    <ShoppingCart size={19} weight="fill" />
-                  </button>
-                </div>
-              </div>
-            </ItemCatalogStyled>
+            <ItemCatalog
+              key={i.id}
+              id={i.id}
+              image={i.image}
+              name={i.name}
+              descripition={i.descripition}
+              price={i.price}
+            />
           )
         })}
-      </CatalogStyeled>
-    </>
+      </div>
+    </CatalogStyeled>
   )
 }
