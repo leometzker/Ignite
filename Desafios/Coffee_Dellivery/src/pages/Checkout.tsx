@@ -1,7 +1,8 @@
 import { CheckoutStyled } from './Styles/CheckoutStyled'
+import { FormAdress } from '../components/FormAdress'
+import { ShoppingCartList } from '../components/ShoppingCartList'
 
 import { Bank, CreditCard, CurrencyDollar, MapPin, Money } from 'phosphor-react'
-import { ShoppingCartIten } from './../components/ShoppingCartIten'
 
 export const Checkout = () => {
   return (
@@ -17,7 +18,7 @@ export const Checkout = () => {
             </span>
           </div>
 
-          <form>dados do cliente</form>
+          <FormAdress />
         </div>
         <div className="paymentContainer">
           <div className="info">
@@ -49,7 +50,7 @@ export const Checkout = () => {
 
         <div className="cartContainer">
           <div className="cartList">
-            <ShoppingCartIten />
+            <ShoppingCartList />
           </div>
 
           <div className="totals">

@@ -22,15 +22,12 @@ export const CheckoutStyled = styled.div`
     color: ${props => props.theme.colors.base_subtitle};
   }
 
-  .formContainer {
-  }
-
   .dataContainer {
     svg:first-of-type {
       color: ${props => props.theme.colors.yellow_dark};
     }
     width: 40rem;
-    height: 37rem;
+    height: 23.25rem;
     padding: 2.5rem;
     border-radius: 6px;
     background-color: ${props => props.theme.colors.base_card};

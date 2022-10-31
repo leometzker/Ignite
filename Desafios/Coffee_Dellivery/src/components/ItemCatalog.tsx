@@ -1,4 +1,4 @@
-import { Minus, Plus, ShoppingCart } from 'phosphor-react'
+import { ShoppingCart } from 'phosphor-react'
 import { ItemCatalogStyled } from './Styles/ItemCatalogStyled'
 import { Count } from './Count'
 

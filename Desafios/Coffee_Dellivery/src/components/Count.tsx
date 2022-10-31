@@ -8,6 +8,7 @@ export const Count = () => {
     <CountStyled>
       <div className="count">
         <button
+          className="inc_dec"
           onClick={() => {
             if (count > 0) {
               return setCount(count - 1)
@@ -18,6 +19,7 @@ export const Count = () => {
         </button>
         <span id="visor">{count}</span>
         <button
+          className="inc_dec"
           onClick={() => {
             return setCount(count + 1)
           }}

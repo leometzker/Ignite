@@ -19,7 +19,7 @@ export const CountStyled = styled.div`
       caret-color: transparent;
     }
 
-    button {
+    .inc_dec {
       cursor: pointer;
       margin: 0 0.4rem;
       display: flex;
