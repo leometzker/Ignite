@@ -1,8 +1,36 @@
 import { CheckoutStyled } from './Styles/CheckoutStyled'
 import { FormAdress } from '../components/FormAdress'
-import { ShoppingCartList } from '../components/ShoppingCartList'
 
 import { Bank, CreditCard, CurrencyDollar, MapPin, Money } from 'phosphor-react'
+import { NavLink } from 'react-router-dom'
+import {
+  ItenShoppingCart,
+  itenShoppingCartType
+} from '../components/ItemShoppingCart'
+
+const shoppingCartList: itenShoppingCartType[] = [
+  {
+    id: '1',
+    image: '../Catalogo/Chocolate_Quente.svg',
+    name: 'cafe 01',
+    quantidade: 1,
+    price: 9.99
+  },
+  {
+    id: '2',
+    image: '../Catalogo/Americano.svg',
+    name: 'cafe 02',
+    quantidade: 2,
+    price: 9.99
+  },
+  {
+    id: '3',
+    image: '../Catalogo/Arabe.svg',
+    name: 'cafe 03',
+    quantidade: 1,
+    price: 9.99
+  }
+]
 
 export const Checkout = () => {
   return (
@@ -50,7 +78,18 @@ export const Checkout = () => {
 
         <div className="cartContainer">
           <div className="cartList">
-            <ShoppingCartList />
+            {shoppingCartList.map(i => {
+              return (
+                <ItenShoppingCart
+                  key={i.id}
+                  id={i.id}
+                  image={i.image}
+                  name={i.name}
+                  quantidade={i.quantidade}
+                  price={i.price}
+                />
+              )
+            })}
           </div>
 
           <div className="totals">
@@ -64,7 +103,9 @@ export const Checkout = () => {
               Total <span>9.99</span>
             </strong>
           </div>
-          <button className="confirm">CONFIRMAR PEDIDO</button>
+          <NavLink to="/confirmation">
+            <button className="confirm">CONFIRMAR PEDIDO</button>
+          </NavLink>
         </div>
       </div>
     </CheckoutStyled>

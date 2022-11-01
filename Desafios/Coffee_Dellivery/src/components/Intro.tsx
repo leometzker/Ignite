@@ -6,8 +6,10 @@ export const Intro = () => {
   return (
     <IntroStyled>
       <div className="introInfo">
-        <strong>Encontre o café perfeito para qualquer hora do dia</strong>
-        <p>
+        <strong className="titleIntro">
+          Encontre o café perfeito para qualquer hora do dia
+        </strong>
+        <p className="pInfo">
           Com o Coffee Delivery você recebe seu café onde estiver, a qualquer
           hora
         </p>

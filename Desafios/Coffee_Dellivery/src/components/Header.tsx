@@ -1,14 +1,14 @@
 import logo from '../assets/logo.svg'
 import { MapPin, ShoppingCart } from 'phosphor-react'
 import { HeaderStyled } from './Styles/HeaderStyled'
-import { Link } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 
 export const Header = () => {
   return (
     <HeaderStyled>
-      <Link to="/">
+      <NavLink to="/">
         <img src={logo} alt="" />
-      </Link>
+      </NavLink>
 
       <div>
         <span>
@@ -16,13 +16,13 @@ export const Header = () => {
           Gov. Valadares, MG
         </span>
 
-        <Link
+        <NavLink
           className="shoppingCart"
           title="Carrinho de Compras"
           to="/checkout"
         >
           <ShoppingCart size={19} weight="fill" />
-        </Link>
+        </NavLink>
       </div>
     </HeaderStyled>
   )

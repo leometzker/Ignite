@@ -18,6 +18,9 @@ export const GlobalStyle = createGlobalStyle`
     color: ${props => props.theme.colors.base_text};
   }
 
+  a {
+    text-decoration: none;
+  }
 
   button {
     border: 0;
