@@ -29,16 +29,19 @@ export type TAdressShoppingCart = typeof defaultAdressShoppingCart
 export type TItemShoppingCart = typeof defaultItemShoppingCart
 export type TResumeShoppingCart = typeof defaultResumeShoppingCart
 
-export type TAction = { type: 'add-item' } | { type: 'remove-item' }
-export interface TState {}
+export type TAction =
+  | { type: 'add-item'; payload: TItemShoppingCart }
+  | { type: 'remove-item'; payload: number }
 
-export interface TShoppingCartContext {
-  itens?: TItemShoppingCart[]
-  adress?: TAdressShoppingCart
-  resume?: TResumeShoppingCart
+export type TState = {
+  itens: TItemShoppingCart[]
+  adress: TAdressShoppingCart
+  resume: TResumeShoppingCart
+}
 
+export interface TShoppingCartContext extends TState {
   AddItem: (item: TItemShoppingCart) => void
-  RemoveItem: (item: TItemShoppingCart) => void
+  RemoveItem: (itemId: number) => void
 }
 
 export interface TShoppingCartProvider {
