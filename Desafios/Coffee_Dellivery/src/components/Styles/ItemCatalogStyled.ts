@@ -21,8 +21,14 @@ export const ItemCatalogStyled = styled.div`
     height: 19.375rem;
     background-color: ${props => props.theme.colors.base_card};
 
+    .type {
+      display: flex;
+      justify-content: center;
+      gap: 0.25rem;
+    }
+
     .coffeeStyle {
-      width: 5rem;
+      width: 4.3rem;
       height: 1.3rem;
       display: flex;
       justify-content: center;

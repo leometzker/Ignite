@@ -14,10 +14,11 @@ export const CatalogStyeled = styled.div`
 
   .catalogList {
     display: flex;
-    align-items: flex-start;
-    justify-content: space-between;
+    align-items: center;
+    justify-content: flex-start;
     flex-wrap: wrap;
     margin-top: 2rem;
+    margin-bottom: 8rem;
     gap: 2rem;
   }
 `
