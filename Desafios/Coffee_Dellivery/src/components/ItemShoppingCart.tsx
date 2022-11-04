@@ -1,16 +1,7 @@
-import { ShoppingCart, Trash } from 'phosphor-react'
+import { Trash } from 'phosphor-react'
+import { TItemShoppingCart } from '../context/ShoppingCartProvider/@types'
 import { Count } from './Count'
 import { ItenShoppingCartStyled } from './Styles/ItenShoppingCartStyled'
-
-const itenShoppingCart = {
-  id: '',
-  image: '../assets/Logo.svg',
-  name: 'nome do cafe',
-  quantidade: 0,
-  price: 9.99
-}
-
-export type itenShoppingCartType = typeof itenShoppingCart
 
 export const ItenShoppingCart = ({
   id,
@@ -18,7 +9,13 @@ export const ItenShoppingCart = ({
   name,
   quantidade,
   price
-}: itenShoppingCartType) => {
+}: TItemShoppingCart) => {
+  const [count, setCount] = useState(0)
+
+  function CounterValue(value: number) {
+    return value
+  }
+
   return (
     <ItenShoppingCartStyled>
       <div className="itenContainer">
