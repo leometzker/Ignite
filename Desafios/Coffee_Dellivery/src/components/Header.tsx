@@ -7,8 +7,6 @@ import { ShoppingCartContext } from '../context/ShoppingCartProvider/ShoppingCar
 import { TItemShoppingCart } from '../context/ShoppingCartProvider/@types'
 
 export const Header = () => {
-  const { AddItem, RemoveItem } = useContext(ShoppingCartContext)
-
   const newItem: TItemShoppingCart = {
     id: 0,
     descricao: '',
@@ -21,9 +19,6 @@ export const Header = () => {
       <NavLink to="/">
         <img src={logo} alt="" />
       </NavLink>
-
-      <button onClick={() => AddItem(newItem)}> testar</button>
-      <button onClick={() => RemoveItem(0)}> testar</button>
 
       <div>
         <span>

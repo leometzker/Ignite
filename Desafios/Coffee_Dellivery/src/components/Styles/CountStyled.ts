@@ -11,7 +11,7 @@ export const CountStyled = styled.div`
     align-items: center;
     justify-content: space-between;
 
-    #visor {
+    #counter {
       font-family: 'Roboto', sans-serif;
       font-size: 1rem;
       font-weight: 400;

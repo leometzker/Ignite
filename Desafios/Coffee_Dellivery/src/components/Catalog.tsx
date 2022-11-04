@@ -1,10 +1,11 @@
-import { ItemCatalogType } from '../@types/@types'
 import { ItemCatalog } from './ItemCatalog'
 import { CatalogStyeled } from './Styles/CatalogStyleg'
+import { uuid } from 'uuidv4'
+import { TItemCatalog } from '../@types/@types'
 
 // *********** Itens do Catálogo *******************
 
-const catalog: ItemCatalogType[] = [
+const catalog: TItemCatalog[] = [
   {
     id: '1',
     image: '/public/Catalogo/Expresso.svg',

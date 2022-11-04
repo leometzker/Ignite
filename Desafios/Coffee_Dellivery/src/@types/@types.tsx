@@ -7,4 +7,6 @@ const itenCatalogInit = {
   price: 9.99
 }
 
-export type ItemCatalogType = typeof itenCatalogInit
+export type TItemCatalog = typeof itenCatalogInit
+
+// **********************

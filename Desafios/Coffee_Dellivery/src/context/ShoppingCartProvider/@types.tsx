@@ -1,9 +1,9 @@
-import { type } from 'os'
 import { ReactNode } from 'react'
 
 export const defaultItemShoppingCart = {
-  id: 0,
-  descricao: '',
+  id: '',
+  image: '',
+  name: '',
   quantidade: 0,
   price: 0
 }
@@ -31,7 +31,7 @@ export type TResumeShoppingCart = typeof defaultResumeShoppingCart
 
 export type TAction =
   | { type: 'add-item'; payload: TItemShoppingCart }
-  | { type: 'remove-item'; payload: number }
+  | { type: 'remove-item'; payload: string }
 
 export type TState = {
   itens: TItemShoppingCart[]
@@ -41,7 +41,7 @@ export type TState = {
 
 export interface TShoppingCartContext extends TState {
   AddItem: (item: TItemShoppingCart) => void
-  RemoveItem: (itemId: number) => void
+  RemoveItem: (itemId: string) => void
 }
 
 export interface TShoppingCartProvider {

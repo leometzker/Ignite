@@ -1,7 +1,6 @@
 import { createContext, useReducer } from 'react'
 import {
   defaultAdressShoppingCart,
-  defaultItemShoppingCart,
   defaultResumeShoppingCart,
   TAction,
   TItemShoppingCart,
@@ -54,12 +53,11 @@ export function ShoppingCartProvider({ children }: TShoppingCartProvider) {
 
   console.log(state.itens)
 
-  function RemoveItem(itemId: number) {
+  function RemoveItem(itemId: string) {
     dispatch({
       type: 'remove-item',
       payload: itemId
     })
-    console.log(state.itens)
   }
 
   return (
