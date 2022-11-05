@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
 export const HomeStyled = styled.main`
-  width: auto;
+  width: 100%;
   /* RESPONSIVIDADE? */
 `

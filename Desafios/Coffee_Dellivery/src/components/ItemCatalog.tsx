@@ -16,19 +16,23 @@ export const ItemCatalog = ({
 }: TItemCatalog) => {
   const shoppingCart = useShoppingCart()
 
-  const newItemCart: TItemShoppingCart = {
-    id: uuidv4(),
-    image: image,
-    name: name,
-    quantidade: 1,
-    price: price
-  }
+  let amountIten = 1 //valor inicial do catalogo
 
   function handleAddItemToShoppingCart() {
+    const newItemCart: TItemShoppingCart = {
+      id: uuidv4(),
+      image: image,
+      name: name,
+      amount: amountIten,
+      price: price
+    }
+
     shoppingCart.AddItem(newItemCart)
   }
 
-  // <button onClick={() => RemoveItem(0)}> testar</button>
+  function GetCounterValue(value: number) {
+    amountIten = value
+  }
 
   return (
     <ItemCatalogStyled>
@@ -49,7 +53,7 @@ export const ItemCatalog = ({
         <div className="description">{descripition}</div>
         <div className="price_qtde">
           <strong className="price">{price}</strong>
-          <Count />
+          <Count CounterValue={GetCounterValue} InitialValue={amountIten} />
           <button
             title="Carrinho de Compras"
             className="shoppingCart"

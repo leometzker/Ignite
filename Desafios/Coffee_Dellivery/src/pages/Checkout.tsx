@@ -6,34 +6,8 @@ import { NavLink } from 'react-router-dom'
 import { ItenShoppingCart } from '../components/ItemShoppingCart'
 import { useShoppingCart } from './../context/ShoppingCartProvider/useShoppingCart'
 
-// const shoppingCartList: TItemShoppingCart[] = [
-//   {
-//     id: '1',
-//     image: '../Catalogo/Chocolate_Quente.svg',
-//     name: 'cafe 01',
-//     quantidade: 1,
-//     price: 9.99
-//   },
-//   {
-//     id: '2',
-//     image: '../Catalogo/Americano.svg',
-//     name: 'cafe 02',
-//     quantidade: 2,
-//     price: 9.99
-//   },
-//   {
-//     id: '3',
-//     image: '../Catalogo/Arabe.svg',
-//     name: 'cafe 03',
-//     quantidade: 1,
-//     price: 9.99
-//   }
-// ]
-
 export const Checkout = () => {
   const shoppingCart = useShoppingCart()
-
-  let qtde = 0
 
   return (
     <CheckoutStyled>
@@ -87,7 +61,7 @@ export const Checkout = () => {
                   id={i.id}
                   image={i.image}
                   name={i.name}
-                  quantidade={i.quantidade}
+                  amount={i.amount}
                   price={i.price}
                 />
               )

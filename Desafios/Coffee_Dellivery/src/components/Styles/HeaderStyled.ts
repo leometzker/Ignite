@@ -1,16 +1,31 @@
 import styled from 'styled-components'
 
 export const HeaderStyled = styled.header`
-  background-color: ${props => props.theme.colors.background};
-  height: 6.5rem;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
 
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  .nav {
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 5rem;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    height: 6.5rem;
+    max-width: 90rem;
+
+    width: 100vw;
+    background-color: ${props => props.theme.colors.background};
+  }
 
   img {
     height: 2.5rem;
   }
+
   span {
     display: flex;
     align-items: center;

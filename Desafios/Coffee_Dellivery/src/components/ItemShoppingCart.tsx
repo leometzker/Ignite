@@ -1,4 +1,5 @@
 import { Trash } from 'phosphor-react'
+import { useEffect, useState } from 'react'
 import { TItemShoppingCart } from '../context/ShoppingCartProvider/@types'
 import { Count } from './Count'
 import { ItenShoppingCartStyled } from './Styles/ItenShoppingCartStyled'
@@ -7,13 +8,15 @@ export const ItenShoppingCart = ({
   id,
   image,
   name,
-  quantidade,
+  amount,
   price
 }: TItemShoppingCart) => {
-  const [count, setCount] = useState(0)
+  const [counter, setCounter] = useState(amount)
 
-  function CounterValue(value: number) {
-    return value
+  console.log(amount)
+
+  function GetCounterValue(value: number) {
+    setCounter(value)
   }
 
   return (
@@ -25,8 +28,7 @@ export const ItenShoppingCart = ({
             <span className="title">{name}</span>
 
             <div className="quantidade">
-              {/* {quantidade} */}
-              <Count />
+              <Count CounterValue={GetCounterValue} InitialValue={amount} />
               <button title="Remover item" className="remove">
                 <Trash size={16} /> REMOVER
               </button>

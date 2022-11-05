@@ -1,36 +1,37 @@
 import { CountStyled } from './Styles/CountStyled'
-import { CloudFog, Minus, Plus } from 'phosphor-react'
+import { Minus, Plus } from 'phosphor-react'
 import { useState } from 'react'
-import { createGlobalStyle } from 'styled-components'
 
-export interface TCounter {
-  CounterValue: (value: number) => number
+export type TCounter = {
+  InitialValue: number
+  CounterValue: (value: number) => void
 }
 
-export const Count = (value: TCounter) => {
-  const [count, setCount] = useState(0)
+export const Count = ({ CounterValue, InitialValue }: TCounter) => {
+  const [count, setCount] = useState(InitialValue)
 
-  console.log(count)
+  function IncCounter() {
+    setCount(c => c + 1)
+  }
+
+  function DecCounter() {
+    if (count > 1) {
+      setCount(c => {
+        return c - 1
+      })
+    }
+  }
+
+  CounterValue(count) //passa o valor do visor do contador
+
   return (
     <CountStyled>
       <div className="count">
-        <button
-          className="inc_dec"
-          onClick={() => {
-            if (count > 0) {
-              return () => setCount(count - 1)
-            }
-          }}
-        >
+        <button className="inc_dec" onClick={DecCounter}>
           <Minus size={14} weight={'bold'} />
         </button>
         <span id="counter">{count}</span>
-        <button
-          className="inc_dec"
-          onClick={() => {
-            return () => setCount(count + 1)
-          }}
-        >
+        <button className="inc_dec" onClick={IncCounter}>
           <Plus size={14} weight={'bold'} />
         </button>
       </div>

@@ -7,32 +7,27 @@ import { ShoppingCartContext } from '../context/ShoppingCartProvider/ShoppingCar
 import { TItemShoppingCart } from '../context/ShoppingCartProvider/@types'
 
 export const Header = () => {
-  const newItem: TItemShoppingCart = {
-    id: 0,
-    descricao: '',
-    quantidade: 0,
-    price: 0
-  }
-
   return (
     <HeaderStyled>
-      <NavLink to="/">
-        <img src={logo} alt="" />
-      </NavLink>
-
-      <div>
-        <span>
-          <MapPin size={19} weight="fill" />
-          Gov. Valadares, MG
-        </span>
-
-        <NavLink
-          className="shoppingCart"
-          title="Carrinho de Compras"
-          to="/checkout"
-        >
-          <ShoppingCart size={19} weight="fill" />
+      <div className="nav">
+        <NavLink to="/">
+          <img src={logo} alt="" />
         </NavLink>
+
+        <div>
+          <span>
+            <MapPin size={19} weight="fill" />
+            Gov. Valadares, MG
+          </span>
+
+          <NavLink
+            className="shoppingCart"
+            title="Carrinho de Compras"
+            to="/checkout"
+          >
+            <ShoppingCart size={19} weight="fill" />
+          </NavLink>
+        </div>
       </div>
     </HeaderStyled>
   )

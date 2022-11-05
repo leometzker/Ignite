@@ -4,7 +4,7 @@ export const defaultItemShoppingCart = {
   id: '',
   image: '',
   name: '',
-  quantidade: 0,
+  amount: 0,
   price: 0
 }
 
