@@ -1,6 +1,6 @@
 import { CountStyled } from './Styles/CountStyled'
 import { Minus, Plus } from 'phosphor-react'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 
 export type TCounter = {
   InitialValue: number
@@ -22,7 +22,10 @@ export const Count = ({ CounterValue, InitialValue }: TCounter) => {
     }
   }
 
-  CounterValue(count) //passa o valor do visor do contador
+  useEffect(
+    () => CounterValue(count), //passa o valor do visor do contador,
+    [count]
+  )
 
   return (
     <CountStyled>

@@ -130,12 +130,12 @@ export const CheckoutStyled = styled.div`
         justify-content: space-between;
       }
 
-      span {
+      .currency {
         display: flex;
         gap: 0.2rem;
       }
 
-      span::before {
+      .currency::before {
         content: 'R$';
       }
 

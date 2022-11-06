@@ -32,6 +32,7 @@ export type TResumeShoppingCart = typeof defaultResumeShoppingCart
 export type TAction =
   | { type: 'add-item'; payload: TItemShoppingCart }
   | { type: 'remove-item'; payload: string }
+  | { type: 'edit-item'; payload: { id: string; quantidade: number } }
 
 export type TState = {
   itens: TItemShoppingCart[]
@@ -42,6 +43,7 @@ export type TState = {
 export interface TShoppingCartContext extends TState {
   AddItem: (item: TItemShoppingCart) => void
   RemoveItem: (itemId: string) => void
+  // EditItem: (itemId: string, quantidade: number) => void
 }
 
 export interface TShoppingCartProvider {

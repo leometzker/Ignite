@@ -9,6 +9,14 @@ import { useShoppingCart } from './../context/ShoppingCartProvider/useShoppingCa
 export const Checkout = () => {
   const shoppingCart = useShoppingCart()
 
+  let totalItens = 0
+  let somaTotal = 0.0
+
+  shoppingCart.itens.forEach(i => {
+    totalItens = totalItens + i.amount
+    somaTotal = somaTotal + i.amount * i.price
+  })
+
   return (
     <CheckoutStyled>
       <div className="formContainer">
@@ -70,13 +78,13 @@ export const Checkout = () => {
 
           <div className="totals">
             <p>
-              Total de itens <span>9.99</span>
+              Total de itens <span>{totalItens}</span>
             </p>
             <p>
-              Entrega <span>9.99</span>
+              Entrega <span className="currency">9.99</span>
             </p>
             <strong>
-              Total <span>9.99</span>
+              Total <span className="currency">{somaTotal}</span>
             </strong>
           </div>
           <NavLink to="/confirmation">

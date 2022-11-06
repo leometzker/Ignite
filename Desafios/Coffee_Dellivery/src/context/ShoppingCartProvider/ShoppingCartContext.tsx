@@ -51,14 +51,18 @@ export function ShoppingCartProvider({ children }: TShoppingCartProvider) {
     })
   }
 
-  console.log(state.itens)
-
   function RemoveItem(itemId: string) {
     dispatch({
       type: 'remove-item',
       payload: itemId
     })
   }
+
+  // function EditItem(itemId: string, value: number) {
+  //   dispatch({
+  //     type: 'edit-item',
+  //     payload:{id = itemId, quantidade = value})
+  // }
 
   return (
     <ShoppingCartContext.Provider value={{ ...state, AddItem, RemoveItem }}>
