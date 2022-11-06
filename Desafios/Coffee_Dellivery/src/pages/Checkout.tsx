@@ -10,11 +10,12 @@ export const Checkout = () => {
   const shoppingCart = useShoppingCart()
 
   let totalItens = 0
-  let somaTotal = 0.0
+  let somaTotal = 0
+  let frete = 5.8
 
   shoppingCart.itens.forEach(i => {
-    totalItens = totalItens + i.amount
-    somaTotal = somaTotal + i.amount * i.price
+    totalItens = totalItens + i.amount * i.price
+    somaTotal = totalItens + frete
   })
 
   return (
@@ -78,13 +79,31 @@ export const Checkout = () => {
 
           <div className="totals">
             <p>
-              Total de itens <span>{totalItens}</span>
+              Total de itens{' '}
+              <span className="currency">
+                {new Intl.NumberFormat('pt-BR', {
+                  style: 'currency',
+                  currency: 'BRL'
+                }).format(totalItens)}
+              </span>
             </p>
             <p>
-              Entrega <span className="currency">9.99</span>
+              Entrega{' '}
+              <span className="currency">
+                {new Intl.NumberFormat('pt-BR', {
+                  style: 'currency',
+                  currency: 'BRL'
+                }).format(frete)}
+              </span>
             </p>
             <strong>
-              Total <span className="currency">{somaTotal}</span>
+              Total{' '}
+              <span className="currency">
+                {new Intl.NumberFormat('pt-BR', {
+                  style: 'currency',
+                  currency: 'BRL'
+                }).format(somaTotal)}
+              </span>
             </strong>
           </div>
           <NavLink to="/confirmation">

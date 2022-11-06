@@ -32,6 +32,17 @@ export function ShoppingCartProvider({ children }: TShoppingCartProvider) {
             }
           })
         }
+      case 'edit-item':
+        return {
+          ...state,
+          itens: state.itens.map(i => {
+            if (i.id !== action.payload.id) {
+              return i
+            } else {
+              return { ...i, amount: action.payload.quantidade }
+            }
+          })
+        }
 
       default:
         return state
@@ -58,14 +69,17 @@ export function ShoppingCartProvider({ children }: TShoppingCartProvider) {
     })
   }
 
-  // function EditItem(itemId: string, value: number) {
-  //   dispatch({
-  //     type: 'edit-item',
-  //     payload:{id = itemId, quantidade = value})
-  // }
+  function EditItem(itemId: string, value: number) {
+    dispatch({
+      type: 'edit-item',
+      payload: { id: itemId, quantidade: value }
+    })
+  }
 
   return (
-    <ShoppingCartContext.Provider value={{ ...state, AddItem, RemoveItem }}>
+    <ShoppingCartContext.Provider
+      value={{ ...state, AddItem, RemoveItem, EditItem }}
+    >
       {children}
     </ShoppingCartContext.Provider>
   )

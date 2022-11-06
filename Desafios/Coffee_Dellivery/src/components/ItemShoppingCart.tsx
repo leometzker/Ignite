@@ -12,7 +12,7 @@ export const ItenShoppingCart = ({
   amount,
   price
 }: TItemShoppingCart) => {
-  const { RemoveItem } = useShoppingCart()
+  const { RemoveItem, EditItem } = useShoppingCart()
 
   const [counter, setCounter] = useState(amount)
 
@@ -24,7 +24,9 @@ export const ItenShoppingCart = ({
     RemoveItem(id)
   }
 
-  useEffect(() => {}, [counter])
+  useEffect(() => {
+    EditItem(id, counter)
+  }, [counter])
 
   return (
     <ItenShoppingCartStyled>

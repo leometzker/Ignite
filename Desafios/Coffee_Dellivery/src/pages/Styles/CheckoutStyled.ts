@@ -130,15 +130,6 @@ export const CheckoutStyled = styled.div`
         justify-content: space-between;
       }
 
-      .currency {
-        display: flex;
-        gap: 0.2rem;
-      }
-
-      .currency::before {
-        content: 'R$';
-      }
-
       strong {
         width: 100%;
         display: flex;

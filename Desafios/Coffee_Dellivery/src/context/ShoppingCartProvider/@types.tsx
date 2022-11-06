@@ -43,7 +43,7 @@ export type TState = {
 export interface TShoppingCartContext extends TState {
   AddItem: (item: TItemShoppingCart) => void
   RemoveItem: (itemId: string) => void
-  // EditItem: (itemId: string, quantidade: number) => void
+  EditItem: (itemId: string, quantidade: number) => void
 }
 
 export interface TShoppingCartProvider {
