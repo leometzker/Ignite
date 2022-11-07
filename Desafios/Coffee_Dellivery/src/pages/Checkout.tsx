@@ -43,24 +43,44 @@ export const Checkout = () => {
           </div>
 
           <div className="paymentChange">
-            <button>
+            <div className="payChange">
               <CreditCard size={16} />
-              CARTÃO DE CREDITO
-            </button>
-            <button>
+              <input
+                className="payFormChange"
+                type="radio"
+                name="radio"
+                id="rdCredit"
+              />
+              <label htmlFor="rdCredit">CARTÃO DE CREDITO</label>
+            </div>
+            <div className="payChange">
               <Bank size={16} />
-              CARTÃO DE DÉBITO
-            </button>
-            <button>
+              <input
+                className="payFormChange"
+                type="radio"
+                name="radio"
+                id="rdDebt"
+              />
+              <label htmlFor="rdDebt">CARTÃO DE DÉBITO</label>
+            </div>
+            <div className="payChange">
               <Money size={16} />
-              DINHEIRO
-            </button>
+              <input
+                className="payFormChange"
+                type="radio"
+                name="radio"
+                id="rdMoney"
+              />
+              <label htmlFor="rdMoney">DINHEIRO</label>
+            </div>
           </div>
         </div>
       </div>
+
       <div className="checkoutContaines">
         <p className="title">Cafés selecionados</p>
 
+        {/* lista de compras */}
         <div className="cartContainer">
           <div className="cartList">
             {shoppingCart.itens.map(i => {

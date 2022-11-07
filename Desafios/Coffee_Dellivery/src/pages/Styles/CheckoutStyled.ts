@@ -40,6 +40,7 @@ export const CheckoutStyled = styled.div`
     padding: 2.5rem;
     border-radius: 6px;
     background-color: ${props => props.theme.colors.base_card};
+    position: relative;
   }
 
   .info {
@@ -65,43 +66,59 @@ export const CheckoutStyled = styled.div`
 
   .paymentChange {
     margin-top: 2rem;
-    width: 100%;
+    width: 35rem;
     height: 3.1875rem;
 
     display: flex;
     justify-content: space-between;
     align-items: center;
+    position: relative;
 
-    button {
-      height: 3.1875rem;
-      width: 11.2rem;
-
+    .payChange {
       display: flex;
-      gap: 0.75rem;
-      padding: 1rem;
-      border-radius: 6px;
+      align-items: center;
+      position: relative;
 
-      font-family: 'Roboto', sans-serif;
-      font-size: 0.75rem;
-      font-weight: 400;
-      line-height: 1.6;
-      color: ${props => props.theme.colors.base_subtitle};
-
-      background-color: ${props => props.theme.colors.base_button};
-
-      &:hover {
-        background-color: ${props => props.theme.colors.base_hover};
+      svg {
+        position: absolute;
+        left: 1rem;
+        z-index: 3;
       }
 
-      &:checked {
-        background-color: ${props => props.theme.colors.purple_light};
-        border: 1px solid ${props => props.theme.colors.purple_dark};
+      label {
+        position: absolute;
+        z-index: 5;
+
+        margin-left: 2.5rem;
+
+        font-family: 'Roboto', sans-serif;
+        font-size: 0.75rem;
+        font-weight: 400;
+        line-height: 1.6;
+        color: ${props => props.theme.colors.base_subtitle};
+      }
+
+      .payFormChange {
+        appearance: none;
+        height: 3.1875rem;
+        width: 11.2rem;
+
+        background-color: ${props => props.theme.colors.base_button};
+        border-radius: 6px;
+
+        &:hover {
+          background-color: ${props => props.theme.colors.base_hover};
+        }
+
+        &:checked {
+          border: 1px solid ${props => props.theme.colors.purple};
+          background-color: ${props => props.theme.colors.purple_light};
+        }
       }
     }
   }
 
-  .checkoutContaines {
-  }
+  /* ******** shoppingCart ******** */
   .cartContainer {
     width: 28rem;
     padding: 2.5rem;
