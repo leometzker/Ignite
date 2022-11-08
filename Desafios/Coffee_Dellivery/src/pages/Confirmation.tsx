@@ -1,8 +1,11 @@
 import { ConfirmationStyled } from './Styles/ConfirmationStyled'
 import image from '../assets/Illustration.png'
 import { CurrencyDollar, MapPin, Timer } from 'phosphor-react'
+import { useShoppingCart } from '../context/ShoppingCartProvider/useShoppingCart'
 
 export const Confirmation = () => {
+  const shoppingCart = useShoppingCart()
+
   return (
     <ConfirmationStyled>
       <div className="text">
@@ -15,41 +18,48 @@ export const Confirmation = () => {
       <div className="content">
         <div className="info">
           <table>
-            <tr>
-              <td>
-                <div className="icon locale">
-                  <MapPin size={16} weight="fill" />
-                </div>
-              </td>
-              <td>
-                <p>
-                  Entrega em <strong> Rua João Daniel Martinelli, 102</strong>
-                </p>
-                <p>Farrapos - Porto Alegre, RS</p>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <div className="icon timer">
-                  <Timer size={16} weight="bold" />
-                </div>
-              </td>
-              <td>
-                <p> Previsão de entrega</p>
-                <strong>20 min - 30 min </strong>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <div className="icon paymenttype">
-                  <CurrencyDollar size={16} weight="bold" />
-                </div>
-              </td>
-              <td>
-                <p>Pagamento na entrega</p>
-                <strong>Cartão de Crédito</strong>
-              </td>
-            </tr>
+            <tbody>
+              <tr>
+                <td>
+                  <div className="icon locale">
+                    <MapPin size={16} weight="fill" />
+                  </div>
+                </td>
+                <td>
+                  <p>
+                    Entrega em
+                    <strong>
+                      {` rua ${shoppingCart.address.rua}, número 
+                      ${shoppingCart.address.numero}`}
+                    </strong>
+                  </p>
+                  <p>{`${shoppingCart.address.cidade} -
+                      ${shoppingCart.address.estado}`}</p>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <div className="icon timer">
+                    <Timer size={16} weight="bold" />
+                  </div>
+                </td>
+                <td>
+                  <p> Previsão de entrega</p>
+                  <strong>20 min - 30 min </strong>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <div className="icon paymenttype">
+                    <CurrencyDollar size={16} weight="bold" />
+                  </div>
+                </td>
+                <td>
+                  <p>Pagamento na entrega</p>
+                  <strong>{shoppingCart.resume.forma_pagamento}</strong>
+                </td>
+              </tr>
+            </tbody>
           </table>
         </div>
 

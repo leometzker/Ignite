@@ -76,6 +76,7 @@ export const CheckoutStyled = styled.div`
 
     .payChange {
       display: flex;
+
       align-items: center;
       position: relative;
 
@@ -83,13 +84,14 @@ export const CheckoutStyled = styled.div`
         position: absolute;
         left: 1rem;
         z-index: 3;
+        cursor: pointer;
       }
 
       label {
         position: absolute;
         z-index: 5;
-
         margin-left: 2.5rem;
+        cursor: pointer;
 
         font-family: 'Roboto', sans-serif;
         font-size: 0.75rem;
@@ -102,6 +104,7 @@ export const CheckoutStyled = styled.div`
         appearance: none;
         height: 3.1875rem;
         width: 11.2rem;
+        cursor: pointer;
 
         background-color: ${props => props.theme.colors.base_button};
         border-radius: 6px;
@@ -169,9 +172,15 @@ export const CheckoutStyled = styled.div`
       line-height: 1.6;
       color: ${props => props.theme.colors.white};
       background-color: ${props => props.theme.colors.yellow};
+      cursor: pointer;
 
-      &:hover {
+      &:not(:disabled):hover {
         background-color: ${props => props.theme.colors.yellow_dark};
+      }
+
+      &:disabled {
+        opacity: 50%;
+        cursor: not-allowed;
       }
     }
   }

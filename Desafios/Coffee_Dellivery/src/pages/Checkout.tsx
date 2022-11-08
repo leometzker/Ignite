@@ -5,18 +5,34 @@ import { Bank, CreditCard, CurrencyDollar, MapPin, Money } from 'phosphor-react'
 import { NavLink } from 'react-router-dom'
 import { ItenShoppingCart } from '../components/ItemShoppingCart'
 import { useShoppingCart } from './../context/ShoppingCartProvider/useShoppingCart'
+import { useEffect } from 'react'
 
 export const Checkout = () => {
   const shoppingCart = useShoppingCart()
 
   let totalItens = 0
   let somaTotal = 0
-  let frete = 5.8
+  let frete = shoppingCart.resume.taxa_entrega
+  let paymentForm = 'Dinheiro'
+
+  const hasItens =
+    !shoppingCart.itens.length || !shoppingCart.resume.forma_pagamento
 
   shoppingCart.itens.forEach(i => {
     totalItens = totalItens + i.amount * i.price
     somaTotal = totalItens + frete
   })
+
+  function changePaymentForm() {
+    const ele: any = document.getElementsByName('rdPayment')
+
+    for (let index = 0; index < ele.length; index++) {
+      if (ele[index].checked) {
+        paymentForm = ele[index].value
+      }
+    }
+    shoppingCart.SetPaymentForm(paymentForm)
+  }
 
   return (
     <CheckoutStyled>
@@ -46,30 +62,37 @@ export const Checkout = () => {
             <div className="payChange">
               <CreditCard size={16} />
               <input
+                onClick={() => changePaymentForm()}
                 className="payFormChange"
                 type="radio"
-                name="radio"
+                name="rdPayment"
                 id="rdCredit"
+                value="Cartão de Crédito"
               />
               <label htmlFor="rdCredit">CARTÃO DE CREDITO</label>
             </div>
             <div className="payChange">
               <Bank size={16} />
               <input
+                onClick={() => changePaymentForm()}
                 className="payFormChange"
                 type="radio"
-                name="radio"
+                name="rdPayment"
                 id="rdDebt"
+                value="Cartão de Débito"
               />
               <label htmlFor="rdDebt">CARTÃO DE DÉBITO</label>
             </div>
             <div className="payChange">
               <Money size={16} />
               <input
+                onClick={() => changePaymentForm()}
                 className="payFormChange"
                 type="radio"
-                name="radio"
+                name="rdPayment"
                 id="rdMoney"
+                value="Dinheiro"
+                // defaultChecked={true}
               />
               <label htmlFor="rdMoney">DINHEIRO</label>
             </div>
@@ -127,7 +150,14 @@ export const Checkout = () => {
             </strong>
           </div>
           <NavLink to="/confirmation">
-            <button className="confirm">CONFIRMAR PEDIDO</button>
+            <button
+              disabled={hasItens}
+              form="addressForm"
+              type="submit"
+              className="confirm"
+            >
+              CONFIRMAR PEDIDO
+            </button>
           </NavLink>
         </div>
       </div>

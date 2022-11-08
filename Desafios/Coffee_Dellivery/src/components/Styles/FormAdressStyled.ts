@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-export const FormAdressStyled = styled.form`
+export const FormAddressStyled = styled.form`
   width: 100%;
   margin-top: 2rem;
   gap: 1rem;

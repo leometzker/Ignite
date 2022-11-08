@@ -39,7 +39,7 @@ export const ConfirmationStyled = styled.div`
       position: relative;
       background-color: ${props => props.theme.colors.background};
 
-      table {
+      tbody {
         font-family: 'Roboto', sans-serif;
         font-weight: 400;
         line-height: 1.3;
