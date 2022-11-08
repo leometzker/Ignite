@@ -1,8 +1,10 @@
+import { ShoppingCart } from 'phosphor-react'
 import { createContext, useReducer } from 'react'
 import {
-  defaultAdressShoppingCart,
+  defaultAddressShoppingCart,
   defaultResumeShoppingCart,
   TAction,
+  TAdressShoppingCart,
   TItemShoppingCart,
   TShoppingCartContext,
   TShoppingCartProvider,
@@ -43,6 +45,16 @@ export function ShoppingCartProvider({ children }: TShoppingCartProvider) {
             }
           })
         }
+      case 'set-payment':
+        return {
+          ...state,
+          resume: { ...state.resume, forma_pagamento: action.payload }
+        }
+      case 'set-address':
+        return {
+          ...state,
+          address: action.payload
+        }
 
       default:
         return state
@@ -51,15 +63,38 @@ export function ShoppingCartProvider({ children }: TShoppingCartProvider) {
 
   const [state, dispatch] = useReducer(reducer, {
     itens: [],
-    adress: defaultAdressShoppingCart,
+    address: defaultAddressShoppingCart,
     resume: defaultResumeShoppingCart
   })
 
   function AddItem(item: TItemShoppingCart) {
-    dispatch({
-      type: 'add-item',
-      payload: item
-    })
+    if (state.itens.length === 0) {
+      dispatch({
+        type: 'add-item',
+        payload: item
+      })
+    } else {
+      console.log(
+        state.itens.filter(i => {
+          i.name === item.name
+        })
+      )
+      console.log(state.itens)
+      console.log(item.name)
+
+      // if (i.id === item.id) {
+      //     dispatch({
+      //       type: 'add-item',
+      //       payload: item
+      //     })
+      //   } else {
+      //     dispatch({
+      //       type: 'edit-item',
+      //       payload: { id: item.id, quantidade: item.amount }
+      //     })
+      //   }
+      // })
+    }
   }
 
   function RemoveItem(itemId: string) {
@@ -76,9 +111,30 @@ export function ShoppingCartProvider({ children }: TShoppingCartProvider) {
     })
   }
 
+  function SetPaymentForm(payForm: string) {
+    dispatch({
+      type: 'set-payment',
+      payload: payForm
+    })
+  }
+
+  function SetAddress(address: TAdressShoppingCart) {
+    dispatch({
+      type: 'set-address',
+      payload: address
+    })
+  }
+
   return (
     <ShoppingCartContext.Provider
-      value={{ ...state, AddItem, RemoveItem, EditItem }}
+      value={{
+        ...state,
+        AddItem,
+        RemoveItem,
+        EditItem,
+        SetAddress,
+        SetPaymentForm
+      }}
     >
       {children}
     </ShoppingCartContext.Provider>
