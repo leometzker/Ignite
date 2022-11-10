@@ -3,9 +3,8 @@ import { CheckoutStyled } from './Styles/CheckoutStyled'
 import { Bank, CreditCard, CurrencyDollar, MapPin, Money } from 'phosphor-react'
 import { ItenShoppingCart } from '../components/ItemShoppingCart'
 import { useShoppingCart } from './../context/ShoppingCartProvider/useShoppingCart'
-import { Formaddress } from '../components/FormAdress'
 import { v4 as uuidv4 } from 'uuid'
-import { NavLink } from 'react-router-dom'
+import { FormAddress } from '../components/FormAdress'
 
 export const Checkout = () => {
   const shoppingCart = useShoppingCart()
@@ -47,7 +46,7 @@ export const Checkout = () => {
             </span>
           </div>
 
-          <Formaddress />
+          <FormAddress />
         </div>
         <div className="paymentContainer">
           <div className="info">

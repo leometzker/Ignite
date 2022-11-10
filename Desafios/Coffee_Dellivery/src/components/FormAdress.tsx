@@ -3,6 +3,7 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import * as zod from 'zod'
 import { useShoppingCart } from '../context/ShoppingCartProvider/useShoppingCart'
 import { FormAddressStyled } from './Styles/FormAdressStyled'
+import { useNavigate } from 'react-router-dom'
 
 const addressFormSchemaValidation = zod.object({
   bairro: zod.string(),
@@ -14,7 +15,7 @@ const addressFormSchemaValidation = zod.object({
   estado: zod.string()
 })
 
-export const Formaddress = () => {
+export const FormAddress = () => {
   const { register, handleSubmit, reset } = useForm<TformAddress>({
     resolver: zodResolver(addressFormSchemaValidation),
     defaultValues: {
@@ -31,12 +32,13 @@ export const Formaddress = () => {
   type TformAddress = zod.infer<typeof addressFormSchemaValidation>
 
   const shoppingCart = useShoppingCart()
+  const navigate = useNavigate()
 
   function handleNewaddress(dataAddress: TformAddress) {
     shoppingCart.SetAddress(dataAddress)
-    // reset()
+    navigate('/confirmation')
+    reset()
   }
-  // console.log(shoppingCart)
 
   return (
     <FormAddressStyled
@@ -46,7 +48,12 @@ export const Formaddress = () => {
       <input type="text" placeholder="CEP" required {...register('cep')} />
       <input type="text" placeholder="Rua" required {...register('rua')} />
       <div>
-        <input type="text" placeholder="Numero" {...register('numero')} />
+        <input
+          type="text"
+          placeholder="Numero"
+          required
+          {...register('numero')}
+        />
         <input
           type="text"
           placeholder="Complemento"
