@@ -67,35 +67,24 @@ export function ShoppingCartProvider({ children }: TShoppingCartProvider) {
   })
 
   function AddItem(item: TItemShoppingCart) {
-    // let amountItemSelected = 0
+    let amountItemSelected = 0
 
-    // const isItemExist = state.itens.filter(i => {
-    //   i.id === item.id
-    // })
+    const isItemExist = state.itens.filter(i => {
+      if (i.id === item.id) return (amountItemSelected = i.amount)
+    }).length
 
-    // console.log(isItemExist)
-    // isItemExist ? console.log('existe') : console.log('não existe')
-
-    dispatch({
-      type: 'add-item',
-      payload: item
-    })
-    // if (i.id === item.id) {
-    //     dispatch({
-    //       type: 'add-item',
-    //       payload: item
-    //     })
-    //   } else {
-    //     dispatch({
-    //       type: 'edit-item',
-    //       payload: { id: item.id, quantidade: item.amount }
-    //     })
-    //   }
-    // })
-    // }
-    // console.log(amountItemSelected)
+    if (isItemExist) {
+      dispatch({
+        type: 'edit-item',
+        payload: { id: item.id, quantidade: item.amount + amountItemSelected }
+      })
+    } else {
+      dispatch({
+        type: 'add-item',
+        payload: item
+      })
+    }
   }
-  // console.log(state.itens)
 
   function RemoveItem(itemId: string) {
     dispatch({
