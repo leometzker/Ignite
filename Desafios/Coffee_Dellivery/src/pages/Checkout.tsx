@@ -1,11 +1,11 @@
 import { CheckoutStyled } from './Styles/CheckoutStyled'
-import { FormAdress } from '../components/FormAdress'
 
 import { Bank, CreditCard, CurrencyDollar, MapPin, Money } from 'phosphor-react'
-import { NavLink } from 'react-router-dom'
 import { ItenShoppingCart } from '../components/ItemShoppingCart'
 import { useShoppingCart } from './../context/ShoppingCartProvider/useShoppingCart'
-import { useEffect } from 'react'
+import { Formaddress } from '../components/FormAdress'
+import { v4 as uuidv4 } from 'uuid'
+import { NavLink } from 'react-router-dom'
 
 export const Checkout = () => {
   const shoppingCart = useShoppingCart()
@@ -47,7 +47,7 @@ export const Checkout = () => {
             </span>
           </div>
 
-          <FormAdress />
+          <Formaddress />
         </div>
         <div className="paymentContainer">
           <div className="info">
@@ -109,7 +109,7 @@ export const Checkout = () => {
             {shoppingCart.itens.map(i => {
               return (
                 <ItenShoppingCart
-                  key={i.id}
+                  key={uuidv4()}
                   id={i.id}
                   image={i.image}
                   name={i.name}
@@ -149,16 +149,15 @@ export const Checkout = () => {
               </span>
             </strong>
           </div>
-          <NavLink to="/confirmation">
-            <button
-              disabled={hasItens}
-              form="addressForm"
-              type="submit"
-              className="confirm"
-            >
-              CONFIRMAR PEDIDO
-            </button>
-          </NavLink>
+
+          <button
+            form="addressForm"
+            type="submit"
+            className="confirm"
+            disabled={hasItens}
+          >
+            CONFIRMAR PEDIDO
+          </button>
         </div>
       </div>
     </CheckoutStyled>

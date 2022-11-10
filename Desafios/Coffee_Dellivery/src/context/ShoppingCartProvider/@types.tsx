@@ -23,7 +23,7 @@ export const defaultResumeShoppingCart = {
   taxa_entrega: 5.5
 }
 
-export type TAdressShoppingCart = typeof defaultAddressShoppingCart
+export type TAddressShoppingCart = typeof defaultAddressShoppingCart
 export type TItemShoppingCart = typeof defaultItemShoppingCart
 export type TResumeShoppingCart = typeof defaultResumeShoppingCart
 
@@ -32,11 +32,11 @@ export type TAction =
   | { type: 'remove-item'; payload: string }
   | { type: 'edit-item'; payload: { id: string; quantidade: number } }
   | { type: 'set-payment'; payload: string }
-  | { type: 'set-address'; payload: TAdressShoppingCart }
+  | { type: 'set-address'; payload: TAddressShoppingCart }
 
 export type TState = {
   itens: TItemShoppingCart[]
-  address: TAdressShoppingCart
+  address: TAddressShoppingCart
   resume: TResumeShoppingCart
 }
 
@@ -45,7 +45,7 @@ export interface TShoppingCartContext extends TState {
   RemoveItem: (itemId: string) => void
   EditItem: (itemId: string, quantidade: number) => void
   SetPaymentForm: (payForm: string) => void
-  SetAddress: (address: TAdressShoppingCart) => void
+  SetAddress: (address: TAddressShoppingCart) => void
 }
 
 export interface TShoppingCartProvider {

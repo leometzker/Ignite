@@ -3,7 +3,6 @@ import { ItemCatalogStyled } from './Styles/ItemCatalogStyled'
 import { Count } from './Count'
 import { useShoppingCart } from './../context/ShoppingCartProvider/useShoppingCart'
 import { TItemShoppingCart } from '../context/ShoppingCartProvider/@types'
-import { v4 as uuidv4 } from 'uuid'
 import { TItemCatalog } from '../@types/@types'
 
 export const ItemCatalog = ({
@@ -16,14 +15,14 @@ export const ItemCatalog = ({
 }: TItemCatalog) => {
   const shoppingCart = useShoppingCart()
 
-  let amountIten = 1 //valor inicial do catalogo
+  let amountItem = 1 //valor inicial do catalogo
 
   function handleAddItemToShoppingCart() {
     const newItemCart: TItemShoppingCart = {
-      id: uuidv4(),
+      id: id,
       image: image,
       name: name,
-      amount: amountIten,
+      amount: amountItem,
       price: price
     }
 
@@ -31,12 +30,12 @@ export const ItemCatalog = ({
   }
 
   function GetCounterValue(value: number) {
-    amountIten = value
+    amountItem = value
   }
 
   return (
     <ItemCatalogStyled>
-      <div className="ItemCatalog" key={id}>
+      <div className="ItemCatalog">
         <img src={image} alt="" />
 
         <div className="type">
@@ -53,7 +52,7 @@ export const ItemCatalog = ({
         <div className="description">{descripition}</div>
         <div className="price_qtde">
           <strong className="price">{price}</strong>
-          <Count CounterValue={GetCounterValue} InitialValue={amountIten} />
+          <Count CounterValue={GetCounterValue} InitialValue={amountItem} />
           <button
             title="Carrinho de Compras"
             className="shoppingCart"

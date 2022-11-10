@@ -1,10 +1,10 @@
-import { FormAddressStyled } from './Styles/FormAdressStyled'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import * as zod from 'zod'
 import { useShoppingCart } from '../context/ShoppingCartProvider/useShoppingCart'
+import { FormAddressStyled } from './Styles/FormAdressStyled'
 
-const adressFormSchemaValidation = zod.object({
+const addressFormSchemaValidation = zod.object({
   bairro: zod.string(),
   cep: zod.string().length(8, 'Digite o CEP (somente caracteres)'),
   cidade: zod.string(),
@@ -14,9 +14,9 @@ const adressFormSchemaValidation = zod.object({
   estado: zod.string()
 })
 
-export const FormAdress = () => {
-  const { register, handleSubmit, reset } = useForm<TformrAddress>({
-    resolver: zodResolver(adressFormSchemaValidation),
+export const Formaddress = () => {
+  const { register, handleSubmit, reset } = useForm<TformAddress>({
+    resolver: zodResolver(addressFormSchemaValidation),
     defaultValues: {
       cep: '',
       rua: '',
@@ -28,19 +28,20 @@ export const FormAdress = () => {
     }
   })
 
-  type TformrAddress = zod.infer<typeof adressFormSchemaValidation>
+  type TformAddress = zod.infer<typeof addressFormSchemaValidation>
 
   const shoppingCart = useShoppingCart()
 
-  function handleNewAdress(dataAddress: TformrAddress) {
+  function handleNewaddress(dataAddress: TformAddress) {
     shoppingCart.SetAddress(dataAddress)
-    reset()
+    // reset()
   }
+  // console.log(shoppingCart)
 
   return (
     <FormAddressStyled
       id="addressForm"
-      onSubmit={handleSubmit(handleNewAdress)}
+      onSubmit={handleSubmit(handleNewaddress)}
     >
       <input type="text" placeholder="CEP" required {...register('cep')} />
       <input type="text" placeholder="Rua" required {...register('rua')} />

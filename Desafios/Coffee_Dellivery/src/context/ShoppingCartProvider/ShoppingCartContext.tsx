@@ -1,10 +1,9 @@
-import { ShoppingCart } from 'phosphor-react'
 import { createContext, useReducer } from 'react'
 import {
   defaultAddressShoppingCart,
   defaultResumeShoppingCart,
   TAction,
-  TAdressShoppingCart,
+  TAddressShoppingCart,
   TItemShoppingCart,
   TShoppingCartContext,
   TShoppingCartProvider,
@@ -68,34 +67,35 @@ export function ShoppingCartProvider({ children }: TShoppingCartProvider) {
   })
 
   function AddItem(item: TItemShoppingCart) {
-    if (state.itens.length === 0) {
-      dispatch({
-        type: 'add-item',
-        payload: item
-      })
-    } else {
-      console.log(
-        state.itens.filter(i => {
-          i.name === item.name
-        })
-      )
-      console.log(state.itens)
-      console.log(item.name)
+    // let amountItemSelected = 0
 
-      // if (i.id === item.id) {
-      //     dispatch({
-      //       type: 'add-item',
-      //       payload: item
-      //     })
-      //   } else {
-      //     dispatch({
-      //       type: 'edit-item',
-      //       payload: { id: item.id, quantidade: item.amount }
-      //     })
-      //   }
-      // })
-    }
+    // const isItemExist = state.itens.filter(i => {
+    //   i.id === item.id
+    // })
+
+    // console.log(isItemExist)
+    // isItemExist ? console.log('existe') : console.log('não existe')
+
+    dispatch({
+      type: 'add-item',
+      payload: item
+    })
+    // if (i.id === item.id) {
+    //     dispatch({
+    //       type: 'add-item',
+    //       payload: item
+    //     })
+    //   } else {
+    //     dispatch({
+    //       type: 'edit-item',
+    //       payload: { id: item.id, quantidade: item.amount }
+    //     })
+    //   }
+    // })
+    // }
+    // console.log(amountItemSelected)
   }
+  // console.log(state.itens)
 
   function RemoveItem(itemId: string) {
     dispatch({
@@ -118,7 +118,7 @@ export function ShoppingCartProvider({ children }: TShoppingCartProvider) {
     })
   }
 
-  function SetAddress(address: TAdressShoppingCart) {
+  function SetAddress(address: TAddressShoppingCart) {
     dispatch({
       type: 'set-address',
       payload: address
