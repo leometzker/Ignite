@@ -66,4 +66,31 @@ export const HeaderStyled = styled.header`
       }
     }
   }
+
+  .iconCart {
+    position: relative;
+  }
+
+  .amountIcon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    right: -17px;
+    top: -17px;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+
+    font-family: 'Roboto', sans-serif;
+    font-weight: 700;
+    font-size: 0.75rem;
+    line-height: 1.3;
+
+    color: ${props => props.theme.colors.base_card};
+    background-color: ${props => props.theme.colors.yellow_dark};
+  }
+  .amountIcon:empty {
+    display: none;
+  }
 `
