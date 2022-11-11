@@ -5,6 +5,7 @@ import { ItenShoppingCart } from '../components/ItemShoppingCart'
 import { useShoppingCart } from './../context/ShoppingCartProvider/useShoppingCart'
 import { v4 as uuidv4 } from 'uuid'
 import { FormAddress } from '../components/FormAdress'
+import { BaseSyntheticEvent } from 'react'
 
 export const Checkout = () => {
   const shoppingCart = useShoppingCart()
@@ -12,7 +13,6 @@ export const Checkout = () => {
   let totalItens = 0
   let somaTotal = 0
   let frete = shoppingCart.resume.taxa_entrega
-  let paymentForm = 'Dinheiro'
 
   const hasItens =
     !shoppingCart.itens.length || !shoppingCart.resume.forma_pagamento
@@ -22,15 +22,8 @@ export const Checkout = () => {
     somaTotal = totalItens + frete
   })
 
-  function changePaymentForm() {
-    const ele: any = document.getElementsByName('rdPayment')
-
-    for (let index = 0; index < ele.length; index++) {
-      if (ele[index].checked) {
-        paymentForm = ele[index].value
-      }
-    }
-    shoppingCart.SetPaymentForm(paymentForm)
+  function changePaymentForm(e: BaseSyntheticEvent) {
+    shoppingCart.SetPaymentForm(e.target.value)
   }
 
   return (
@@ -61,7 +54,7 @@ export const Checkout = () => {
             <div className="payChange">
               <CreditCard size={16} />
               <input
-                onClick={() => changePaymentForm()}
+                onClick={e => changePaymentForm(e)}
                 className="payFormChange"
                 type="radio"
                 name="rdPayment"
@@ -73,7 +66,7 @@ export const Checkout = () => {
             <div className="payChange">
               <Bank size={16} />
               <input
-                onClick={() => changePaymentForm()}
+                onClick={e => changePaymentForm(e)}
                 className="payFormChange"
                 type="radio"
                 name="rdPayment"
@@ -85,7 +78,7 @@ export const Checkout = () => {
             <div className="payChange">
               <Money size={16} />
               <input
-                onClick={() => changePaymentForm()}
+                onClick={e => changePaymentForm(e)}
                 className="payFormChange"
                 type="radio"
                 name="rdPayment"
