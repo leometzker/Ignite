@@ -2,7 +2,7 @@ export const DefaultTheme = {
   title: 'default',
 
   colors: {
-    background: '#FAFAFA',
+    background: '#ECE4D5',
     white: '#FFFFFF',
 
     yellow: '#DBAC2C',
