@@ -1,23 +1,22 @@
-import { LayoutStyled } from './styles/layout'
 import logo from '../assets/logoMain.svg'
-import { MagnifyingGlass } from 'phosphor-react'
+import { LayoutStyled } from './styles/Layout'
+import { Summary } from '../components/Summary'
+import { SearchBar } from '../components/SearchBar'
+import { Extract } from '../components/Extratct'
 
 export const Layout = () => {
   return (
     <LayoutStyled>
       <header>
         <img src={logo} />
-        <button>
-          <MagnifyingGlass size={20} />
-          Nova Transação
-        </button>
+        <button>Nova Transação</button>
       </header>
 
-      <div className="container">
-        <main>
-          <h1>oi</h1>
-        </main>
-      </div>
+      <Summary />
+
+      <SearchBar />
+
+      <Extract />
     </LayoutStyled>
   )
 }

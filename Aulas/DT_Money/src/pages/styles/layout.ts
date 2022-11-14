@@ -15,7 +15,7 @@ export const LayoutStyled = styled.div`
     width: 100vw;
     height: 13.25rem;
 
-    background-color: ${props => props.theme.color['gray-900']};
+    background-color: ${props => props.theme.color['gray-800']};
   }
 
   header {
@@ -23,9 +23,5 @@ export const LayoutStyled = styled.div`
     justify-content: space-between;
     align-items: center;
     padding: 2.5rem 0;
-  }
-
-  .container {
-    background-color: ${props => props.theme.color['green-500']};
   }
 `
