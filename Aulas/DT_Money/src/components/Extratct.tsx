@@ -1,81 +1,29 @@
-import { ExtractStyled } from './Styles/ExtratctStyled'
+import { ExtractStyled, PriceHighLight } from './Styles/ExtratctStyled'
 
-const transactions = [
+interface Ttransactions {
+  description: string
+  value: number
+  category: string
+  date: string
+  type: 'income' | 'outcome'
+}
+
+const transactions: Ttransactions[] = [
   {
     description: 'Desenvolvimento de site',
-    value: 'R$ 12.000,00',
+    value: 2000,
     category: 'Venda',
-    date: '13/04/202'
+    date: '13/04/202',
+    type: 'income'
   },
   {
     description: 'Desenvolvimento de site',
-    value: 'R$ 12.000,00',
+    value: 130.5,
     category: 'Venda',
-    date: '13/04/202'
-  },
-  {
-    description: 'Desenvolvimento de site',
-    value: 'R$ 12.000,00',
-    category: 'Venda',
-    date: '13/04/202'
-  },
-  {
-    description: 'Desenvolvimento de site',
-    value: 'R$ 12.000,00',
-    category: 'Venda',
-    date: '13/04/202'
-  },
-  {
-    description: 'Desenvolvimento de site',
-    value: 'R$ 12.000,00',
-    category: 'Venda',
-    date: '13/04/202'
-  },
-  {
-    description: 'Desenvolvimento de site',
-    value: 'R$ 12.000,00',
-    category: 'Venda',
-    date: '13/04/202'
-  },
-  {
-    description: 'Desenvolvimento de site',
-    value: 'R$ 12.000,00',
-    category: 'Venda',
-    date: '13/04/202'
-  },
-  {
-    description: 'Desenvolvimento de site',
-    value: 'R$ 12.000,00',
-    category: 'Venda',
-    date: '13/04/202'
-  },
-  {
-    description: 'Desenvolvimento de site',
-    value: 'R$ 12.000,00',
-    category: 'Venda',
-    date: '13/04/202'
-  },
-  {
-    description: 'Desenvolvimento de site',
-    value: 'R$ 12.000,00',
-    category: 'Venda',
-    date: '13/04/202'
-  },
-  {
-    description: 'Desenvolvimento de site',
-    value: 'R$ 12.000,00',
-    category: 'Venda',
-    date: '13/04/202'
-  },
-  {
-    description: 'Desenvolvimento de site',
-    value: 'R$ 12.000,00',
-    category: 'Venda',
-    date: '13/04/202'
+    date: '13/04/202',
+    type: 'outcome'
   }
 ]
-
-type TTransaction = typeof transactions
 
 export const Extract = () => {
   return (
@@ -86,7 +34,9 @@ export const Extract = () => {
             return (
               <tr>
                 <td>{t.description}</td>
-                <td>{t.value}</td>
+                <td>
+                  <PriceHighLight variant={t.type}>{t.value}</PriceHighLight>
+                </td>
                 <td>{t.category}</td>
                 <td>{t.date}</td>
               </tr>

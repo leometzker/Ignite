@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-export const SearchBarStyled = styled.div`
+export const SearchBarStyled = styled.form`
   margin-top: 4rem;
 
   .container {

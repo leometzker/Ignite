@@ -1,6 +1,17 @@
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 
-export const ExtractStyled = styled.main`
+interface PriceHighLightProps {
+  variant?: 'income' | 'outcome'
+}
+
+export const PriceHighLight = styled.span<PriceHighLightProps>`
+  color: ${props =>
+    props.variant === 'income'
+      ? props.theme.color['green-300']
+      : props.theme.color['red-300']};
+`
+
+export const ExtractStyled = styled.div`
   margin-top: 2rem;
 
   .Extract {

@@ -16,7 +16,7 @@ export const Summary = () => {
         </span>
         R$ 1.259,00
       </div>
-      <div className="card total">
+      <div className="card total" /*variant= 'green'*/>
         <span>
           Totais <CurrencyDollar size={32} />
         </span>
