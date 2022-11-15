@@ -17,7 +17,7 @@ const transactions: Ttransactions[] = [
     type: 'income'
   },
   {
-    description: 'Desenvolvimento de site',
+    description: 'Lanche',
     value: 130.5,
     category: 'Venda',
     date: '13/04/202',
@@ -32,7 +32,7 @@ export const Extract = () => {
         <tbody>
           {transactions.map(t => {
             return (
-              <tr>
+              <tr key={t.description}>
                 <td>{t.description}</td>
                 <td>
                   <PriceHighLight variant={t.type}>{t.value}</PriceHighLight>

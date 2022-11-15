@@ -3,13 +3,20 @@ import { LayoutStyled } from './styles/Layout'
 import { Summary } from '../components/Summary'
 import { SearchBar } from '../components/SearchBar'
 import { Extract } from '../components/Extratct'
+import * as Dialog from '@radix-ui/react-dialog'
+import { NewTransactionModa } from '../components/NewTransactionModal'
 
 export const Layout = () => {
   return (
     <LayoutStyled>
       <header>
         <img src={logo} />
-        <button>Nova Transação</button>
+        <Dialog.Root>
+          <Dialog.Trigger asChild>
+            <button>Nova Transação</button>
+          </Dialog.Trigger>
+          <NewTransactionModa />
+        </Dialog.Root>
       </header>
 
       <Summary />
