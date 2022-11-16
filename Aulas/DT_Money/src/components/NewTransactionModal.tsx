@@ -4,7 +4,7 @@ import {
   NewTransactionModalStyled
 } from './Styles/NewTransactionModalStyled'
 import * as Dialog from '@radix-ui/react-dialog'
-import { X } from 'phosphor-react'
+import { ArrowCircleDown, ArrowCircleUp, X } from 'phosphor-react'
 
 function handleNewTransaction(dataNewTransaction: any) {
   // event.preventDefault()
@@ -38,7 +38,10 @@ export const NewTransactionModa = () => {
                   value={'income'}
                   required
                 />
-                <label htmlFor="income">Entrada</label>
+                <label htmlFor="income" className="income">
+                  <ArrowCircleUp size={32} />
+                  Entrada
+                </label>
                 <input
                   type="radio"
                   name="in-out"
@@ -46,7 +49,9 @@ export const NewTransactionModa = () => {
                   value={'outcome'}
                   required
                 />
-                <label htmlFor="outcome">Saída</label>
+                <label htmlFor="outcome" className="outcome">
+                  <ArrowCircleDown size={32} /> Saída
+                </label>
               </div>
               <button type="submit">Cadastrar</button>
             </form>

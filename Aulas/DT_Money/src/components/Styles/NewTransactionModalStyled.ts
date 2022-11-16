@@ -45,6 +45,7 @@ export const DialogContent = styled(Dialog.Content)`
     height: 1.5rem;
 
     background-color: transparent;
+    line-height: 0;
     border: 0;
     padding: 0.2rem;
   }
@@ -77,20 +78,45 @@ export const DialogContent = styled(Dialog.Content)`
 
       input {
         display: none;
-        &:checked + Label {
-          background-color: ${props => props.theme.color['green-500']};
+        &:checked + .income {
+          background-color: ${props => props.theme.color['green-300']};
+
+          svg {
+            color: ${props => props.theme.color.white};
+          }
+        }
+
+        display: none;
+        &:checked + .outcome {
+          background-color: ${props => props.theme.color['red-300']};
+          svg {
+            color: ${props => props.theme.color.white};
+          }
         }
       }
 
       Label {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 0.7rem;
         text-align: center;
         padding: 1rem 2rem;
         border-radius: 6px;
         width: 50%;
+        font-weight: 700;
+        font-size: 1rem;
+        transition: 0.2s;
         background-color: ${props => props.theme.color['gray-800']};
+        color: ${props => props.theme.color.white};
+      }
 
-        &:hover {
-        }
+      .income svg {
+        color: ${props => props.theme.color['green-300']};
+      }
+
+      .outcome svg {
+        color: ${props => props.theme.color['red-300']};
       }
     }
   }
