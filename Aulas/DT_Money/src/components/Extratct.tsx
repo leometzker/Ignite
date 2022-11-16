@@ -1,44 +1,27 @@
+import { useTransaction } from '../contexts/TransactionsContext'
+import { dateFormatter, priceFormatter } from '../utils/formater'
 import { ExtractStyled, PriceHighLight } from './Styles/ExtratctStyled'
 
-interface Ttransactions {
-  description: string
-  value: number
-  category: string
-  date: string
-  type: 'income' | 'outcome'
-}
-
-const transactions: Ttransactions[] = [
-  {
-    description: 'Desenvolvimento de site',
-    value: 2000,
-    category: 'Venda',
-    date: '13/04/202',
-    type: 'income'
-  },
-  {
-    description: 'Lanche',
-    value: 130.5,
-    category: 'Venda',
-    date: '13/04/202',
-    type: 'outcome'
-  }
-]
-
 export const Extract = () => {
+  // dados da API
+  const extract = useTransaction()
+
   return (
     <ExtractStyled>
       <table className="Extract">
         <tbody>
-          {transactions.map(t => {
+          {extract.transactions.map(t => {
             return (
-              <tr key={t.description}>
+              <tr key={t.id}>
                 <td>{t.description}</td>
                 <td>
-                  <PriceHighLight variant={t.type}>{t.value}</PriceHighLight>
+                  <PriceHighLight variant={t.type}>
+                    {t.type === 'outcome' && '- '}
+                    {priceFormatter.format(t.value)}
+                  </PriceHighLight>
                 </td>
                 <td>{t.category}</td>
-                <td>{t.date}</td>
+                <td>{dateFormatter.format(new Date(t.createdAt))}</td>
               </tr>
             )
           })}

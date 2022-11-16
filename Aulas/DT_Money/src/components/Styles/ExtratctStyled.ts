@@ -40,7 +40,7 @@ export const ExtractStyled = styled.div`
 
           &:nth-child(4) {
             text-align: right;
-            width: 2rem;
+            width: 2.5rem;
           }
 
           &:first-child {

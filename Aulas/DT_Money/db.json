@@ -1,0 +1,36 @@
+{
+  "transactions": [
+    {
+      "id": 1,
+      "description": "Desenvolvimento",
+      "value": 15000,
+      "type": "income",
+      "category": "Job",
+      "createdAt": "2022-11-15T03:50:19.330Z"
+    },
+    {
+      "id": 2,
+      "description": "Lanche",
+      "value": 20,
+      "category": "Alimentação",
+      "type": "outcome",
+      "createdAt": "2022-11-16T03:50:19.330Z"
+    },
+    {
+      "id": 3,
+      "description": "Suco",
+      "value": 7,
+      "category": "Alimentação",
+      "type": "outcome",
+      "createdAt": "2022-11-17T03:50:19.330Z"
+    },
+    {
+      "id": 4,
+      "description": "Computador",
+      "value": 1513,
+      "category": "Equipamento",
+      "type": "outcome",
+      "createdAt": "2022-11-14T03:50:19.330Z"
+    }
+  ]
+}
