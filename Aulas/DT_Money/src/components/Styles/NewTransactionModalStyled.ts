@@ -120,4 +120,11 @@ export const DialogContent = styled(Dialog.Content)`
       }
     }
   }
+
+  button[type='submit'] {
+    &:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
+  }
 `

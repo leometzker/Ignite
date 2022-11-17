@@ -4,7 +4,7 @@ import { Summary } from '../components/Summary'
 import { SearchBar } from '../components/SearchBar'
 import { Extract } from '../components/Extratct'
 import * as Dialog from '@radix-ui/react-dialog'
-import { NewTransactionModa } from '../components/NewTransactionModal'
+import { NewTransactionModal } from '../components/NewTransactionModal'
 
 export const Layout = () => {
   return (
@@ -15,7 +15,7 @@ export const Layout = () => {
           <Dialog.Trigger asChild>
             <button>Nova Transação</button>
           </Dialog.Trigger>
-          <NewTransactionModa />
+          <NewTransactionModal />
         </Dialog.Root>
       </header>
 

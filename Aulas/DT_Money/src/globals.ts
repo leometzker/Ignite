@@ -33,7 +33,7 @@ button {
   
   cursor: pointer;
   
-  &:hover{
+  &:not(:disabled):hover{
     color: ${props => props.theme.color['gray-100']};
     background-color: ${props => props.theme.color['green-700']};
     
