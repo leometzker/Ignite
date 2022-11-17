@@ -5,55 +5,67 @@ import {
   useEffect,
   useState
 } from 'react'
+import { api } from '../liib/axios'
 
 export interface TTransaction {
-  id: number
   description: string
   value: number
   category: string
-  createdAt: Date
+  createdAt?: Date
   type: 'income' | 'outcome'
 }
 
 interface TTransactionsContext {
   transactions: TTransaction[]
+  fetchTransactions: (query?: string) => Promise<void>
+  createNewTransaction: (dataTransaction: TTransaction) => Promise<void>
 }
 
 const TransactionsContext = createContext({} as TTransactionsContext)
 
 export const TransactionProvider = ({ children }: { children: ReactNode }) => {
-  //\/\/\/\/\/  Dados da API  \/\/\/\/\/\/
+  // Dados da API
   const [transactions, setTransactions] = useState<TTransaction[]>([])
 
-  async function loadTransactions() {
-    const response = await fetch('http://localhost:3000/transactions')
-    const data = await response.json()
+  async function fetchTransactions(query?: string) {
+    const response = await api.get('/transactions', {
+      params: {
+        q: query,
+        _sort: 'createdAt',
+        _order: 'desc'
+      }
+    })
 
-    setTransactions(data)
+    setTransactions(response.data)
   }
 
-  useEffect(
-    () => {
-      loadTransactions()
-    },
+  async function createNewTransaction(dataNewTransaction: TTransaction) {
+    const response = await api.post('transactions', {
+      ...dataNewTransaction,
+      createdAt: new Date()
+    })
 
-    // fetch('http://localhost:3000/transactions')
-    //   .then(response => response.json())
-    //   .then(data => console.log(data))
-    []
-  )
+    setTransactions(state => [response.data, ...state])
+  }
+
+  useEffect(() => {
+    fetchTransactions()
+  }, [])
 
   return (
-    <TransactionsContext.Provider value={{ transactions }}>
+    <TransactionsContext.Provider
+      value={{
+        transactions,
+        fetchTransactions,
+        createNewTransaction
+      }}
+    >
       {children}
     </TransactionsContext.Provider>
   )
 }
 
-export const useTransaction = () => useContext(TransactionsContext)
-
-// {
-
-//   const context = useContext(TransactionsContext)
-//    return context
-// }
+export const useTransaction = () => {
+  const context = useContext(TransactionsContext)
+  return context
+}

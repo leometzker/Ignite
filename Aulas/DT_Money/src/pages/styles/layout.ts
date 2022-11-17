@@ -2,7 +2,7 @@ import styled from 'styled-components'
 
 export const LayoutStyled = styled.div`
   max-width: 90rem;
-  padding: 0 2rem;
+  padding: 0 5rem;
   margin: 0 auto 2rem;
 
   &::before {

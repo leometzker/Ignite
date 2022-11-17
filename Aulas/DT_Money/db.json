@@ -31,6 +31,22 @@
       "category": "Equipamento",
       "type": "outcome",
       "createdAt": "2022-11-14T03:50:19.330Z"
+    },
+    {
+      "description": "Site",
+      "value": 600,
+      "category": "Venda",
+      "type": "income",
+      "createdAt": "2022-11-17T17:24:28.101Z",
+      "id": 5
+    },
+    {
+      "description": "Sanduiche",
+      "value": 18,
+      "category": "Alimentação",
+      "type": "outcome",
+      "createdAt": "2022-11-17T17:39:20.445Z",
+      "id": 6
     }
   ]
 }

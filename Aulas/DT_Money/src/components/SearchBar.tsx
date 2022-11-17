@@ -1,8 +1,9 @@
-import { MagnifyingGlass } from 'phosphor-react'
+import { MagnifyingGlass, Watch } from 'phosphor-react'
 import { useForm } from 'react-hook-form'
 import { SearchBarStyled } from './Styles/SearchBarStyled'
 import * as z from 'zod'
 import { zodResolver } from '@hookform/resolvers/zod'
+import { useTransaction } from '../contexts/TransactionsContext'
 
 const searchFormSchema = z.object({
   query: z.string()
@@ -14,13 +15,18 @@ export const SearchBar = () => {
   const {
     register,
     handleSubmit,
-    formState: { isSubmitting }
+    formState: { isSubmitting },
+    watch
   } = useForm<TSearchForm>({
     resolver: zodResolver(searchFormSchema)
   })
 
+  watch('query')
+  const transactions = useTransaction()
+
   function handleSearchSubmit(data: TSearchForm) {
-    console.log(data)
+    transactions.fetchTransactions(data.query)
+    // console.log(data)
   }
 
   return (
