@@ -1,3 +1,10 @@
+import { BrowserRouter } from 'react-router-dom'
+import { Router } from './router'
+
 export function App() {
-  return <h2>GitHub Blog</h2>
+  return (
+    <BrowserRouter>
+      <Router />
+    </BrowserRouter>
+  )
 }

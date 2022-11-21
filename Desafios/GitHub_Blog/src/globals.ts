@@ -8,10 +8,20 @@ export const Globals = createGlobalStyle`
     box-sizing: border-box;
   }
 
+  a{
+    text-decoration: none;
+    color: ${props => props.theme.colors.blue};
+  }
+  
   body {
-    background-color: silver;
 
-
+    
+    background-color: ${props => props.theme.colors.background};
+    color: ${props => props.theme.colors.text};
+    font-family: 'Nunito', sans-serif;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.6;
   } 
 
 
