@@ -10,6 +10,7 @@ export const Globals = createGlobalStyle`
 
   a{
     text-decoration: none;
+    font-weight: 700;
     color: ${props => props.theme.colors.blue};
   }
   

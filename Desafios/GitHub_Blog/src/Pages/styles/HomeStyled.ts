@@ -16,5 +16,23 @@ export const HomeStyled = styled.div`
         padding: 2rem;
       }
     }
+    a {
+      color: beige;
+    }
+
+    .contentBase {
+      overflow: hidden; // Removendo barra de rolagem
+      text-overflow: ellipsis; // Adicionando "..." ao final
+      display: -webkit-box;
+      -webkit-line-clamp: 4; // Quantidade de linhas
+      -webkit-box-orient: vertical;
+
+      /* para uma linha
+      max-width: 500px; // Limite maximo do texto
+      white-space: nowrap; // Removendo quebra de linha
+      overflow: hidden; // Removendo a barra de rolagem
+      text-overflow: ellipsis; // Adicionando "..." ao final do texto
+       */
+    }
   }
 `
