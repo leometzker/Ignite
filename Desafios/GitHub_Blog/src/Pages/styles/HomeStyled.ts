@@ -16,9 +16,6 @@ export const HomeStyled = styled.div`
         padding: 2rem;
       }
     }
-    a {
-      color: beige;
-    }
 
     .contentBase {
       overflow: hidden; // Removendo barra de rolagem

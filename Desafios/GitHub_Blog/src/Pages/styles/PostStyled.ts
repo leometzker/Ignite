@@ -9,6 +9,11 @@ export const PostStyled = styled.div`
         font-size: 0.875rem;
       }
 
+      a {
+        font-weight: 700;
+        color: ${props => props.theme.colors.blue};
+      }
+
       height: 10.5rem;
       border-radius: 10px;
       padding: 2rem;

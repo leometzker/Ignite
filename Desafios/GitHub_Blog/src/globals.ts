@@ -10,13 +10,10 @@ export const Globals = createGlobalStyle`
 
   a{
     text-decoration: none;
-    font-weight: 700;
-    color: ${props => props.theme.colors.blue};
+    color: ${props => props.theme.colors.text};
   }
   
   body {
-
-    
     background-color: ${props => props.theme.colors.background};
     color: ${props => props.theme.colors.text};
     font-family: 'Nunito', sans-serif;
