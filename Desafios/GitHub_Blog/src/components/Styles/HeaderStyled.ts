@@ -77,6 +77,9 @@ export const HeaderStyled = styled.header`
   }
 
   .linkGH {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
     position: absolute;
     right: 2rem;
     top: 2.5rem;

@@ -1,5 +1,12 @@
 import { useApi } from '../database/api'
 import { HeaderStyled } from './Styles/HeaderStyled'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import {
+  faBuilding,
+  faUpRightFromSquare,
+  faUserGroup
+} from '@fortawesome/free-solid-svg-icons'
+import { faGithub } from '@fortawesome/free-brands-svg-icons'
 
 export const Header = () => {
   const { user } = useApi()
@@ -15,25 +22,24 @@ export const Header = () => {
 
           <div className="bar">
             <span>
-              {/* <FontAwesomeIcon icon={brands('github')} /> */}
+              <FontAwesomeIcon icon={faGithub} />
               {user.login}
             </span>
             <span>
-              {/* <FontAwesomeIcon icon={faBuilding} /> */}
+              <FontAwesomeIcon icon={faBuilding} />
               {user.company}
             </span>
             <span>
-              {/* <FontAwesomeIcon icon={faUserGroup} /> */}
+              <FontAwesomeIcon icon={faUserGroup} />
               {`${user.followers} seguidores`}
             </span>
           </div>
         </div>
       </div>
 
-      <a href={user.html_url} className="linkGH">
+      <a href={user.html_url} className="linkGH" target={'_blank'}>
         GITHUB
-        {/* <FontAwesomeIcon icon={regular('coffee')} /> */}
-        {/* <FontAwesomeIcon icon={faSquareArrowUpRight} /> */}
+        <FontAwesomeIcon icon={faUpRightFromSquare} />
       </a>
     </HeaderStyled>
   )

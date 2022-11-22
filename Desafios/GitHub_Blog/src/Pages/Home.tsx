@@ -4,7 +4,7 @@ import { useApi } from '../database/api'
 import { HomeStyled } from './styles/HomeStyled'
 
 export const Home = () => {
-  const { user, cards } = useApi()
+  const { cards } = useApi()
 
   return (
     <HomeStyled>
