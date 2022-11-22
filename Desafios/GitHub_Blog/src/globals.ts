@@ -22,6 +22,10 @@ export const Globals = createGlobalStyle`
     line-height: 1.6;
   } 
 
+  :focus {
+  outline: transparent;
+  
+}
 
 
 

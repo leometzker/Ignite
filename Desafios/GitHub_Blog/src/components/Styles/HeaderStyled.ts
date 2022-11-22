@@ -69,19 +69,17 @@ export const HeaderStyled = styled.header`
   }
 
   a {
-    display: flex;
-    gap: 0.5rem;
-    align-items: center;
-    font-weight: 700;
-    color: ${props => props.theme.colors.blue};
-  }
-
-  .linkGH {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
     position: absolute;
     right: 2rem;
     top: 2.5rem;
+
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+
+    font-weight: 700;
+    font-size: 0.85rem;
+
+    color: ${props => props.theme.colors.blue};
   }
 `
