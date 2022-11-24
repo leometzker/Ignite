@@ -1,5 +1,5 @@
 import axios from 'axios'
-import {
+import React, {
   createContext,
   ReactNode,
   useContext,
@@ -19,16 +19,19 @@ export interface IUser {
 
 export interface ICard {
   title: string
-  url: string
+  html_url: string
   created_at: string
   id: number
   body: string
+  comments: number
 }
 
 export interface TApiContext {
   user: IUser
   cards: ICard[]
+  selectedPost: ICard | null
   searchPosts: (query?: string) => void
+  setPost: (post: ICard) => void
 }
 
 const ApiContext = createContext({} as TApiContext)
@@ -41,6 +44,12 @@ export const ApiProvider = ({ children }: { children: ReactNode }) => {
   const [user, setUser] = useState<IUser>({} as IUser)
 
   const [cards, setCards] = useState<ICard[]>([])
+
+  const [selectedPost, setSelectPost] = useState<ICard | null>(null)
+
+  function setPost(post: ICard) {
+    setSelectPost(post)
+  }
 
   async function fetchGitUser() {
     const response = await api.get('/users/leometzker')
@@ -75,12 +84,15 @@ export const ApiProvider = ({ children }: { children: ReactNode }) => {
   }, [])
 
   return (
-    <ApiContext.Provider value={{ user, cards, searchPosts }}>
+    <ApiContext.Provider
+      value={{ user, cards, searchPosts, selectedPost, setPost }}
+    >
       {children}
     </ApiContext.Provider>
   )
 }
 
 export const useApi = () => {
-  return useContext(ApiContext)
+  const context = useContext(ApiContext)
+  return context
 }
