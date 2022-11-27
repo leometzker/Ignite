@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@splidejs/react-splide": "^0.7.12",
     "@stitches/react": "^1.2.8",
     "@types/node": "18.11.9",
     "@types/react": "18.0.25",

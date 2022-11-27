@@ -10,7 +10,7 @@ export const HomeContainer = styled('main', {
 })
 
 export const Items = styled('a', {
-  minWidth: '43.5rem',
+  // minWidth: '43.5rem',
   height: '41rem',
   borderRadius: 10,
 
