@@ -9,23 +9,17 @@ export const HomeContainer = styled('main', {
   justifyContent: 'flex-start'
 })
 
-export const ItemsContainer = styled('div', {
-  width: '43.5rem',
+export const Items = styled('a', {
+  minWidth: '43.5rem',
   height: '41rem',
-  background: 'linear-gradient(180deg, #1EA483 0%, #7465D4 100%)',
   borderRadius: 10,
 
-  display: 'flex',
-  alignItems: 'space-between'
-})
-
-export const Items = styled('a', {
-  width: '100%',
-  height: '100%',
   display: 'flex',
   flexDirection: 'column',
   alignItems: 'center',
   justifyContent: 'center',
+
+  background: 'linear-gradient(180deg, #1EA483 0%, #7465D4 100%)',
 
   position: 'relative',
   overflow: 'hidden',
