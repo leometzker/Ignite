@@ -3,10 +3,11 @@ import { styled } from '../Styles'
 export const LayoutConteiner = styled('div', {
   display: 'flex',
   flexDirection: 'column',
-  alignItems: 'flex-start',
+  alignItems: 'center',
   justifyContent: 'center',
-  minHeight: '100vh',
-  marginLeft: '8.5rem'
+  margin: 'auto 0',
+  marginLeft: '8.5rem',
+  height: '100vh'
 })
 
 export const Header = styled('header', {
