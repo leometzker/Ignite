@@ -6,7 +6,23 @@ export const HomeContainer = styled('main', {
 
   display: 'flex',
   alignItems: 'center',
-  justifyContent: 'flex-start'
+  justifyContent: 'flex-start',
+
+  '.splide__slide': {
+    opacity: 0.4
+  },
+
+  '.splide__slide.is-active': {
+    opacity: 1,
+    border: 0,
+    outline: 0,
+
+    footer: {
+      transform: 'translateY(0%)',
+      opacity: 100,
+      transition: 'all 0.2s ease-in-out'
+    }
+  }
 })
 
 export const Items = styled('a', {
@@ -59,13 +75,13 @@ export const Items = styled('a', {
     transform: 'translateY(110%)',
     opacity: 0,
     transition: 'all 0.2s ease-in-out'
-  },
-
-  '&:hover': {
-    footer: {
-      transform: 'translateY(0%)',
-      opacity: 100,
-      transition: 'all 0.2s ease-in-out'
-    }
   }
+
+  // '&:hover': {
+  //   footer: {
+  //     transform: 'translateY(0%)',
+  //     opacity: 100,
+  //     transition: 'all 0.2s ease-in-out'
+  //   }
+  // }
 })
