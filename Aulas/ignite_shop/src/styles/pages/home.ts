@@ -1,4 +1,5 @@
 import { styled } from '../Styles'
+import Link from 'next/link'
 
 export const HomeContainer = styled('main', {
   width: '100%',
@@ -25,7 +26,7 @@ export const HomeContainer = styled('main', {
   }
 })
 
-export const Items = styled('a', {
+export const Items = styled(Link, {
   // minWidth: '43.5rem',
   height: '41rem',
   borderRadius: 10,

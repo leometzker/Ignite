@@ -3,7 +3,7 @@ import { Items, HomeContainer } from '../styles/pages/home'
 import { Splide, SplideSlide } from '@splidejs/react-splide'
 import '@splidejs/react-splide/css'
 import { stripe } from '../lib/stripe'
-import { GetServerSideProps, GetStaticProps } from 'next'
+import { GetStaticProps } from 'next'
 import Stripe from 'stripe'
 
 interface IProducts {
@@ -36,7 +36,7 @@ export default function Home({ products }: IProducts) {
         {products.map(product => {
           return (
             <SplideSlide key={product.id}>
-              <Items>
+              <Items href={`/product/${product.id}`}>
                 <Image src={product.imageUrl} width={480} height={520} alt="" />
                 <footer>
                   <strong>{product.name}</strong>
