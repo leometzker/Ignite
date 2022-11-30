@@ -15,6 +15,7 @@ export const CardStyled = styled.div`
     height: 4rem;
     display: flex;
     justify-content: space-between;
+    gap: 1rem;
 
     .cardTitle {
       font-size: 1.25rem;
@@ -24,6 +25,7 @@ export const CardStyled = styled.div`
     }
 
     .cardDate {
+      text-align: right;
       font-size: 0.875rem;
       font-weight: 400;
       line-height: 1.4;

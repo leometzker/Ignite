@@ -3,13 +3,13 @@ import { NavLink } from 'react-router-dom'
 import { useApi } from '../contexts/ApiContext'
 import { PostStyled } from './styles/PostStyled'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import remarkGfm from 'remark-gfm'
+import remarkBreaks from 'remark-breaks'
 import {
-  faBuilding,
   faCalendarDay,
   faChevronLeft,
   faComment,
-  faUpRightFromSquare,
-  faUserGroup
+  faUpRightFromSquare
 } from '@fortawesome/free-solid-svg-icons'
 import { faGithub } from '@fortawesome/free-brands-svg-icons'
 import { ptBR } from 'date-fns/locale'
@@ -57,7 +57,7 @@ export const Post = () => {
 
         <main>
           <div className="markContent">
-            <ReactMarkdown>
+            <ReactMarkdown remarkPlugins={[remarkGfm, remarkBreaks]}>
               {selectedPost ? selectedPost.body : 'conteúdo não encontrado'}
             </ReactMarkdown>
           </div>

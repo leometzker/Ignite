@@ -53,12 +53,13 @@ export const ApiProvider = ({ children }: { children: ReactNode }) => {
 
   async function fetchGitUser() {
     const response = await api.get('/users/leometzker')
-    // const response = await api.get('/users/diego3g')
+    // const response = await api.get('/users/caioagiani')
     setUser(response.data)
   }
 
   async function searchPosts(query?: string) {
     let search = 'repo:leometzker/MyBlog'
+    // let search = 'repo:caioagiani/mobizon-node'
 
     if (query) {
       search = query + ' ' + search

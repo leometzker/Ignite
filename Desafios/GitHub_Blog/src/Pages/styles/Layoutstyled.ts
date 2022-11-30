@@ -4,7 +4,7 @@ export const Layoutstyled = styled.div`
   position: relative;
   padding: 0 5rem;
   max-width: 90rem;
-  margin: 0 auto;
+  margin: 0 auto 5rem;
 
   .fundo {
     margin: 0;
