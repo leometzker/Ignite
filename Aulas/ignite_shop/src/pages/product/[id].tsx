@@ -1,3 +1,4 @@
+import axios from 'axios'
 import { GetStaticPaths, GetStaticProps } from 'next'
 import Image from 'next/image'
 import { useRouter } from 'next/router'
@@ -12,13 +13,33 @@ interface IProductsProps {
     imageUrl: string
     price: string
     description: string
+    defaultPriceId: string
   }
 }
+
 export default function Produto({ product }: IProductsProps) {
   const { isFallback } = useRouter()
 
+  async function handleByProduct() {
+    try {
+      console.log(product.defaultPriceId)
+      const res = await axios.post('/api/checkout', {
+        priceId: product.defaultPriceId
+      })
+
+      const { checkoutUrl } = res.data
+
+      window.location.href = checkoutUrl // rota externa
+
+      // se fosse usar uma rota internal
+      //  const router = useRouter()
+      // router.push('/checkout')
+    } catch (error) {
+      alert('Falha ao redirecionar ao checkout')
+    }
+  }
+
   if (isFallback) {
-    console.log('rodou')
     return (
       <div>
         <h1>loading...</h1>
@@ -34,7 +55,9 @@ export default function Produto({ product }: IProductsProps) {
           <h1> {product.name}</h1>
           <span className="price">{product.price}</span>
           <p className="description">{product.description}</p>
-          <button className="byButton">Comprar agora</button>
+          <button onClick={handleByProduct} className="byButton">
+            Comprar agora
+          </button>
         </div>
       </Product>
     )
@@ -62,6 +85,7 @@ export const getStaticProps: GetStaticProps<any, { id: string }> = async ({
   }
 
   const productId = params?.id
+
   const product = await stripe.products.retrieve(productId, {
     expand: ['default_price']
   })
@@ -78,7 +102,8 @@ export const getStaticProps: GetStaticProps<any, { id: string }> = async ({
           currency: 'BRL',
           style: 'currency'
         }).format(price.unit_amount! / 100),
-        description: product.description
+        description: product.description,
+        defaultPriceId: price.id
       },
       revalidate: 60 * 60 * 1 // uma hora
     }
