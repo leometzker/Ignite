@@ -1,33 +1,86 @@
+import { GetStaticPaths, GetStaticProps } from 'next'
 import Image from 'next/image'
 import { useRouter } from 'next/router'
+import Stripe from 'stripe'
+import { stripe } from '../../lib/stripe'
 import { Product } from '../../styles/pages/product'
 
-export default function Produto() {
-  const { query } = useRouter()
-  return (
-    <Product>
-      <div className="showProduct">
-        <Image
-          src={
-            'https://images.unsplash.com/photo-1668778426772-6a8fa7d5772b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80'
-          }
-          width={480}
-          height={520}
-          alt=""
-        />
+interface IProductsProps {
+  product: {
+    id: string
+    name: string
+    imageUrl: string
+    price: string
+    description: string
+  }
+}
+export default function Produto({ product }: IProductsProps) {
+  const { isFallback } = useRouter()
+
+  if (isFallback) {
+    console.log('rodou')
+    return (
+      <div>
+        <h1>loading...</h1>
       </div>
-      <div className="info">
-        <h1>Titulod do produto</h1>
-        <span className="price">{'R$88,69'}</span>
-        <p className="description">
-          {JSON.stringify(query)}
-          <br />
-          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ut nisi
-          ipsum, veniam et id incidunt est hic officiis quaerat neque aliquid
-          culpa rem ex iusto ratione aspernatur harum ullam ducimus.
-        </p>
-        <button className="byButton">Comprar agora</button>
-      </div>
-    </Product>
-  )
+    )
+  } else {
+    return (
+      <Product>
+        <div className="showProduct">
+          <Image src={product.imageUrl} width={480} height={520} alt="" />
+        </div>
+        <div className="info">
+          <h1> {product.name}</h1>
+          <span className="price">{product.price}</span>
+          <p className="description">{product.description}</p>
+          <button className="byButton">Comprar agora</button>
+        </div>
+      </Product>
+    )
+  }
+}
+
+export const getStaticPaths: GetStaticPaths = async () => {
+  return {
+    paths: [
+      // {
+      //   params: { id: 'prod_MsQmmJPEXoZ8KC' }  // pode ser colocado aqui os parametros dos produtos mais acessados ou que se deseja apresentar inicialmente
+      // }
+    ],
+    fallback: true
+  }
+}
+
+export const getStaticProps: GetStaticProps<any, { id: string }> = async ({
+  params
+}) => {
+  if (!params) {
+    return {
+      notFound: true
+    }
+  }
+
+  const productId = params?.id
+  const product = await stripe.products.retrieve(productId, {
+    expand: ['default_price']
+  })
+
+  const price = product.default_price as Stripe.Price
+
+  return {
+    props: {
+      product: {
+        id: product.id,
+        name: product.name,
+        imageUrl: product.images[0],
+        price: new Intl.NumberFormat('pt-BR', {
+          currency: 'BRL',
+          style: 'currency'
+        }).format(price.unit_amount! / 100),
+        description: product.description
+      },
+      revalidate: 60 * 60 * 1 // uma hora
+    }
+  }
 }

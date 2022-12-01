@@ -11,7 +11,7 @@ interface IProducts {
     id: string
     name: string
     imageUrl: string
-    price: number
+    price: string
   }[]
 }
 
@@ -36,7 +36,7 @@ export default function Home({ products }: IProducts) {
         {products.map(product => {
           return (
             <SplideSlide key={product.id}>
-              <Items href={`/product/${product.id}`}>
+              <Items href={`/product/${product.id}`} prefetch={false}>
                 <Image src={product.imageUrl} width={480} height={520} alt="" />
                 <footer>
                   <strong>{product.name}</strong>
@@ -72,6 +72,6 @@ export const getStaticProps: GetStaticProps = async () => {
 
   return {
     props: { products },
-    revalidate: 5000
+    revalidate: 60 * 60 * 2 //medida em segundos
   }
 }
