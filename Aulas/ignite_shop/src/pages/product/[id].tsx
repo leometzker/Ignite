@@ -1,5 +1,6 @@
 import axios from 'axios'
 import { GetStaticPaths, GetStaticProps } from 'next'
+import Head from 'next/head'
 import Image from 'next/image'
 import { useRouter } from 'next/router'
 import Stripe from 'stripe'
@@ -47,19 +48,25 @@ export default function Produto({ product }: IProductsProps) {
     )
   } else {
     return (
-      <Product>
-        <div className="showProduct">
-          <Image src={product.imageUrl} width={480} height={520} alt="" />
-        </div>
-        <div className="info">
-          <h1> {product.name}</h1>
-          <span className="price">{product.price}</span>
-          <p className="description">{product.description}</p>
-          <button onClick={handleByProduct} className="byButton">
-            Comprar agora
-          </button>
-        </div>
-      </Product>
+      <>
+        <Head>
+          <title>{product.name} | Ignite Shop</title>
+        </Head>
+
+        <Product>
+          <div className="showProduct">
+            <Image src={product.imageUrl} width={480} height={520} alt="" />
+          </div>
+          <div className="info">
+            <h1> {product.name}</h1>
+            <span className="price">{product.price}</span>
+            <p className="description">{product.description}</p>
+            <button onClick={handleByProduct} className="byButton">
+              Comprar agora
+            </button>
+          </div>
+        </Product>
+      </>
     )
   }
 }

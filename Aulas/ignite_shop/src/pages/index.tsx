@@ -5,6 +5,7 @@ import '@splidejs/react-splide/css'
 import { stripe } from '../lib/stripe'
 import { GetStaticProps } from 'next'
 import Stripe from 'stripe'
+import Head from 'next/head'
 
 interface IProducts {
   products: {
@@ -17,37 +18,48 @@ interface IProducts {
 
 export default function Home({ products }: IProducts) {
   return (
-    <HomeContainer>
-      <Splide
-        options={{
-          fixedHeight: '42rem',
-          fixedWidth: '43.5rem',
-          width: '100%',
-          padding: '5rem',
-          gap: '2rem',
-          // perPage: 2,
-          focus: 'center',
-          perMove: 1,
-          pagination: false,
-          rewind: true,
-          isNavigation: true
-        }}
-      >
-        {products.map(product => {
-          return (
-            <SplideSlide key={product.id}>
-              <Items href={`/product/${product.id}`} prefetch={false}>
-                <Image src={product.imageUrl} width={480} height={520} alt="" />
-                <footer>
-                  <strong>{product.name}</strong>
-                  <span>{product.price}</span>
-                </footer>
-              </Items>
-            </SplideSlide>
-          )
-        })}
-      </Splide>
-    </HomeContainer>
+    <>
+      <Head>
+        <title>Ignite Shop</title>
+      </Head>
+
+      <HomeContainer>
+        <Splide
+          options={{
+            fixedHeight: '42rem',
+            fixedWidth: '43.5rem',
+            width: '100%',
+            padding: '5rem',
+            gap: '2rem',
+            // perPage: 2,
+            focus: 'center',
+            perMove: 1,
+            pagination: false,
+            rewind: true,
+            isNavigation: true
+          }}
+        >
+          {products.map(product => {
+            return (
+              <SplideSlide key={product.id}>
+                <Items href={`/product/${product.id}`} prefetch={false}>
+                  <Image
+                    src={product.imageUrl}
+                    width={480}
+                    height={520}
+                    alt=""
+                  />
+                  <footer>
+                    <strong>{product.name}</strong>
+                    <span>{product.price}</span>
+                  </footer>
+                </Items>
+              </SplideSlide>
+            )
+          })}
+        </Splide>
+      </HomeContainer>
+    </>
   )
 }
 
