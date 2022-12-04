@@ -48,6 +48,8 @@ export default function Home({ products }: IProducts) {
                     width={480}
                     height={520}
                     alt=""
+                    quality={50}
+                    priority={true}
                   />
                   <footer>
                     <strong>{product.name}</strong>

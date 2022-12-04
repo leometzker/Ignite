@@ -17,9 +17,9 @@ export const SuccessStyled = styled('main', {
   },
 
   '.image': {
-    width: '8rem',
-    height: '9rem',
-    padding: '0.5rem',
+    width: 'auto',
+    height: 'auto',
+    padding: '0.2rem',
     borderRadius: 8,
 
     display: 'flex',

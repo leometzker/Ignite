@@ -55,7 +55,14 @@ export default function Produto({ product }: IProductsProps) {
 
         <Product>
           <div className="showProduct">
-            <Image src={product.imageUrl} width={480} height={520} alt="" />
+            <Image
+              src={product.imageUrl}
+              width={480}
+              height={520}
+              alt=""
+              quality={50}
+              priority={false}
+            />
           </div>
           <div className="info">
             <h1> {product.name}</h1>

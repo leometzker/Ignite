@@ -24,7 +24,14 @@ export default function Success({ customerName, product }: SuccessProps) {
       <SuccessStyled>
         <h1>Compra efetuada!</h1>
         <div className="image">
-          <Image src={product.imageUrl} width={150} height={170} alt="" />
+          <Image
+            src={product.imageUrl}
+            width={150}
+            height={170}
+            alt=""
+            priority={true}
+            quality={30}
+          />
         </div>
         <p>
           Uhuul <strong> {customerName}</strong>, sua

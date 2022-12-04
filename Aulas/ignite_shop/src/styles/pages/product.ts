@@ -19,7 +19,6 @@ export const Product = styled('div', {
     background: 'linear-gradient(180deg, #1EA483 0%, #7465D4 100%)',
 
     img: {
-      width: '100%',
       objectFit: 'cover'
     }
   },
@@ -53,6 +52,7 @@ export const Product = styled('div', {
       color: '$gray300',
       marginTop: '2.5rem'
     },
+
     '.byButton': {
       borderRadius: 8,
       marginTop: 'auto',
