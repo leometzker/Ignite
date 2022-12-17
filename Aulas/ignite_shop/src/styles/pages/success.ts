@@ -17,9 +17,7 @@ export const SuccessStyled = styled('main', {
   },
 
   '.image': {
-    width: 'auto',
-    height: 'auto',
-    padding: '0.2rem',
+    padding: '0.5rem',
     borderRadius: 8,
 
     display: 'flex',
@@ -30,7 +28,6 @@ export const SuccessStyled = styled('main', {
 
     marginTop: '4rem',
     img: {
-      width: '100%',
       objectFit: 'cover'
     }
   },
