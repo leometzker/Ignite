@@ -24,6 +24,7 @@ export default function Produto({ product }: IProductsProps) {
   async function handleByProduct() {
     try {
       console.log(product.defaultPriceId)
+      // return
       const res = await axios.post('/api/checkout', {
         priceId: product.defaultPriceId
       })

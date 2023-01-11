@@ -15,7 +15,7 @@ export const Overlay = styled('div', {
 
 export const CartContainer = styled('div', {
   // transition: 'margin-right 2s, color 1s',
-  width: '25rem',
+  width: '40rem',
   height: '100%',
   backgroundColor: '$green300',
   padding: '1rem',

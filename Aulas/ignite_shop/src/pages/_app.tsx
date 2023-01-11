@@ -5,7 +5,7 @@ import Image from 'next/image'
 import { Header, LayoutConteiner } from './../styles/pages/appStyle'
 import { CartProvider } from 'use-shopping-cart'
 import { Handbag } from 'phosphor-react'
-import Cart from '../components/shoppingCart'
+import ShoppingCart from '../components/shoppingCart'
 import { useState } from 'react'
 
 Global()
@@ -17,7 +17,6 @@ export default function App({ Component, pageProps }: AppProps) {
     setShowCart(false)
   }
 
-  console.log(showCart)
   return (
     <LayoutConteiner>
       <CartProvider
@@ -39,7 +38,7 @@ export default function App({ Component, pageProps }: AppProps) {
           </button>
         </Header>
         <Component {...pageProps} />
-        {showCart ? <Cart close={closeCart} /> : null}
+        {showCart ? <ShoppingCart close={closeCart} /> : null}
       </CartProvider>
     </LayoutConteiner>
   )
